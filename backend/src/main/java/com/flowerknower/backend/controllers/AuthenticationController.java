@@ -1,8 +1,8 @@
 package com.flowerknower.backend.controllers;
 
-import com.flowerknower.backend.services.AuthenticationService;
 import com.flowerknower.backend.model.requests.*;
 import com.flowerknower.backend.model.responses.*;
+import com.flowerknower.backend.services.authentication.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

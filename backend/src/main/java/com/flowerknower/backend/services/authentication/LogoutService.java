@@ -1,4 +1,4 @@
-package com.flowerknower.backend.services;
+package com.flowerknower.backend.services.authentication;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,4 +1,4 @@
-package com.flowerknower.backend.services;
+package com.flowerknower.backend.services.authentication;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +20,7 @@ import com.flowerknower.backend.model.requests.*;
 import com.flowerknower.backend.model.responses.*;
 import com.flowerknower.backend.repositories.TokenRepository;
 import com.flowerknower.backend.repositories.UserRepository;
+import com.flowerknower.backend.services.jwt.JWTService;
 
 @Service
 @RequiredArgsConstructor

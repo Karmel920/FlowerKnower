@@ -1,4 +1,4 @@
-package com.flowerknower.backend.services;
+package com.flowerknower.backend.services.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
