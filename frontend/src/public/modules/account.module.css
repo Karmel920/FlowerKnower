@@ -1,0 +1,64 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    overflow:hidden;
+}
+.main{
+    width: 100%;
+    display:flex;
+}
+.accountForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    margin-top: 3ch;
+}
+.profilePicture{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+#picture{
+    display:inline-block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+#saveBtn{
+    width:20%;
+    height: 2em;
+    background: #FAF7FF;
+    border: 2px solid #1BF808;
+    border-radius: 30px;
+    margin:0.5em 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #2CA800;
+}
+#saveBtn:hover{
+    background: #55db52;
+    color: white;
+}
+.emailText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 63px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 63px;
+    color: #000000;
+    }

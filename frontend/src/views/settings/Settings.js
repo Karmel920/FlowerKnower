@@ -2,6 +2,8 @@ import React from "react";
 import styles from '../../public/modules/settings.module.css';
 import Header from "../../public/components/Header";
 import Confirmation from "../../public/components/Confirmation";
+import { Divider } from "@mui/material";
+import { Box } from "@mui/system";
 function Settings(){
 
     const [openConfirmation, setOpenConfirmation] = React.useState(false);
@@ -15,6 +17,8 @@ function Settings(){
                     <Confirmation open={openConfirmation} onClose ={() => setOpenConfirmation(false)}/>
                     <div className={styles.forms}>
                         <form className={styles.changePasswordForm} action="">
+                            {/* <p className={styles.formText}>Change your password</p>
+                            <Divider sx={{width:"100%"}}/> */}
                             <p className={styles.formText}>Current password</p>
                             <input id={styles.changePasswordInput} name="curr_password" type="password" placeholder="********"/>
                             <p className={styles.formText}>New password</p>
@@ -24,6 +28,10 @@ function Settings(){
                             <button id={styles.saveButton} type="submit">Save</button>
                         </form>
                         <form className={styles.changeEmailForm} action="">
+                            {/* <Box sx={{alignSelf:"flex-start"}}>
+                                <p className={styles.formText}>Change your email</p>
+                                <Divider sx={{width:"100%"}}/>
+                            </Box> */}
                             <p className={styles.formText}>Current email address</p>
                             <input id={styles.changeEmailInput} name="curr_email" type="email" />
                             <p className={styles.formText}>New email address</p>

@@ -1,7 +1,43 @@
 import React from "react";
+import styles from '../../public/modules/account.module.css';
+import Header from "../../public/components/Header";
+import { Button } from "@mui/material";
+import BasicPhoto from '../../public/img/basic_photo.svg'
+function Account({photo}){
 
-function Account(){
+    const [photo_url, setPhotoUrl] = React.useState(photo);
+    const previewPhoto = (event) => {
+            const choseFile = event.target.files[0];
+            if(choseFile){
+                const reader = new FileReader();
+                reader.addEventListener('load',function(){
+                    setPhotoUrl(reader.result);
+                })
+                reader.readAsDataURL(choseFile);
+            }
+    }
+    if(photo_url === ''){
+        setPhotoUrl(BasicPhoto);
+    }
 
-
+    return(
+        <div className={styles.container}> 
+            <header><Header title={"Profile"}/></header>
+            <main className={styles.main}>
+                <form className={styles.accountForm} action="" encType='multipart/form-data'>
+                    <div className={styles.profilePicture}>
+                        <div id={styles.picture} style={{backgroundImage:`url(${photo_url})`}}></div>
+                        <Button variant="contained" component="label">
+                            Choose photo
+                            <input hidden accept="image/*" type="file" onChange={previewPhoto}/>
+                        </Button>
+                    </div>
+                    <p className={styles.emailText}>example@gmail.com</p>
+                    <p className={styles.text}>2 species discovered</p>
+                    <button id={styles.saveBtn} type="submit">Save changes</button>
+                </form>
+            </main>
+        </div>
+    );
 }
 export default Account;
