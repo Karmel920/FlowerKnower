@@ -1,0 +1,82 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    overflow:hidden;
+}
+.main{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin-top: 5ch;
+    align-items: center;
+}
+.forms{
+    width: 100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+.changePasswordForm, .changeEmailForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid black;
+    border-radius: 30px;
+    width:60%;
+    justify-self: center;
+}
+.formText{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+}
+#changePasswordInput, #changeEmailInput{
+    text-align: center;
+    width:70%;
+    height: 2em;
+    margin-bottom: 1em;
+    border: 1px solid black;
+    font-size: 20px;
+    background: white;
+}
+#saveButton{
+    width:50%;
+    height: 2em;
+    background: #FAF7FF;
+    border: 2px solid #1BF808;
+    border-radius: 30px;
+    margin-bottom:1em;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #2CA800;
+}
+#saveButton:hover{
+    background: #55db52;
+    color: white;
+}
+#deleteAccountBtn{
+    width:20%;
+    height:2em;
+    background: #FAF7FF;
+    border: 2px solid #F80808;
+    border-radius: 30px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    margin-top:inherit;
+    color: #F11717;
+}
+#deleteAccountBtn:hover{
+    background: #e03d3d;
+    color:white;
+ 
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+.main{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+}
+.container{
+    width:70%;
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    -webkit-box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
+    box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
+}
+
+.loginPanel{
+    height:100vh;
+    background: #FDFFFE;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loginForm{
+    display:flex;
+    flex-direction:column;
+    width:50%;
+}
+input{
+    background: rgba(217,217,217,0.4);
+    border-radius: 15px;
+    margin-top: 1.5em;
+    padding-left: 0.5em;
+    height: 3em;
+    width: 100%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 45px;
+}
+.mainText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 108px;
+    color: black;
+}
+#loginButton{
+    background: #CDB225;
+    border: 3px solid #D6DA2C;
+    border-radius: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-top: 2em;
+    width: 60%;
+    cursor: pointer;
+}
+#loginButton:hover{
+    background:#ffffff;
+    color:#000000;
+}
+.registerPanel{
+    background: linear-gradient(180deg, #39F192 0%, rgba(134, 210, 194, 0.5) 100%);
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-left: 0.2em;
+    text-align:center;   
+    width:100%;
+    justify-content: space-around;
+}
+.firstText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 42px;
+    color: #FFFFFF;
+}
+.secondText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+#registerButton{
+    background: #ffffff;
+    border: 3px solid #32CE2F;
+    border-radius: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000000;
+    margin-top: 2em;
+    width: 80%;
+    cursor: pointer;
+    align-self: center;
+}
+#registerButton:hover{
+    background:#55db52;
+    color:#ffffff;
+
+}
+.link{
+    width:100%;
+}

@@ -1,0 +1,11 @@
+.navbar{
+    width: 305px;
+    height: 100vh;
+}
+.categoryText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 60px;
+}
