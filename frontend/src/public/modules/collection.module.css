@@ -1,0 +1,34 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
+}
+.main{
+    display:grid;
+    grid-template-columns: 0.5fr 2fr;
+    width:100%;
+    height:100%;
+}
+.section{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.speciesContainer{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height:100%;
+    margin-top: 3ch;
+    align-items: center;
+    overflow:auto;
+}
+.text{
+    font-family: 'Poppins';
+    font-style: 'normal';
+    font-size: 25px;
+    color: black;
+    margin-left: 2ch;
+}

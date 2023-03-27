@@ -1,0 +1,44 @@
+.species{
+    background: #DEE9DC;
+    border-radius: 30px;
+    width: 60%;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+.speciesHeader{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 1.5ch;
+}
+.speciesText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 35px;
+    color:black;
+}
+.speciesBody{
+    padding-left: 2em;
+    padding-right: 2em;
+    width:100%;
+    overflow:hidden;
+}
+.speciesBodyText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 35px;
+    color:black;
+}
+.iconButton{
+    transition: transform 0.3s ease-out;
+}
+.iconButton_rotated{
+    transform: rotate(180deg);
+}
