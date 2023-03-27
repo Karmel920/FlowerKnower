@@ -2,10 +2,16 @@ import { Drawer, ListItemText, Toolbar, Box, List, ListItem, ListItemButton } fr
 import React from 'react';
 import styles from '../../public/modules/navbar.module.css';
 import Logo from '../img/main_logo.png';
+import {Link} from 'react-router-dom';
 function Navbar(){
     
-    const categories = ['Idenitfy plant','Your plants','Map of discoveries'];
-
+    // const categories = ['Idenitfy plant','Your plants','Map of discoveries'];
+    const listStyle={
+        fontSize: "22px",
+        fontFamily:"Poppins",
+        fontStyle:"normal",
+        width: '100%'
+    }
     return(
         <div className={styles.navbar}>
              <Drawer
@@ -26,13 +32,29 @@ function Navbar(){
                 <Toolbar/>
                 <Box sx={{display:"flex",flexDirection:"column"}}>
                     <List>
-                        {categories.map((text) =>(
-                            <ListItem key={text} disablePadding sx={{mt:"1ch", mb:"1ch"}}>
+                        <ListItem disabledPadding sx={{mb:"1ch"}}>
+                            <Link to="/">
                                 <ListItemButton>
-                                    <ListItemText sx={{fontFamily:"Poppins",fontSize:"30px"}} primary={text}/>
+                                    <ListItemText primaryTypographyProps={{style: listStyle }} primary="Identify plants"/>
                                 </ListItemButton>
-                            </ListItem>
-                        ))}
+                            </Link>
+                        </ListItem>
+        
+                        <ListItem disabledPadding sx={{mb:"1ch"}}>
+                            <Link to="/collection">
+                                <ListItemButton>
+                                    <ListItemText primaryTypographyProps={{style: listStyle }} primary="Your plants"/>
+                                </ListItemButton>
+                            </Link>
+                        </ListItem>
+                        <ListItem disabledPadding sx={{mb:"1ch"}}>
+                            <Link to="/map">
+                                <ListItemButton>
+                                    <ListItemText primaryTypographyProps={{style: listStyle }} primary="Map of discoveries"/>
+                                </ListItemButton>
+                            </Link>
+                        </ListItem>
+
                     </List>
                     <img src={Logo} alt="Logo" style={{bottom:"50px", left:"50px", position:"absolute"}}/>
                 </Box>

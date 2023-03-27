@@ -5,6 +5,7 @@ import Register from './views/register/Register';
 import Main from './views/main/Main';
 import Settings from './views/settings/Settings';
 import Account from './views/account/Account';
+import Collection from './views/collection/Collection';
 function App() {
   return (
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Main/>} />
         <Route path="/settings" element={<Settings/>} />
         <Route path="/account" element={<Account photo={''}/>} />
+        <Route path="/collection" element={<Collection/>}/>
     </Routes>
 
   );

@@ -1,9 +1,10 @@
-import { Avatar, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip, Box } from '@mui/material';
+import { Avatar, Divider, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from '@mui/material';
 import React from 'react';
 import styles from '../modules/header.module.css';
 import HomeIcon from '@mui/icons-material/Home';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Logout, Settings } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Link} from 'react-router-dom';
 function Header({title}){
 
@@ -79,10 +80,14 @@ function Header({title}){
                 >
                     <Link to="/account">
                         <MenuItem onClick={handleClose}>
-                            <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center",alignItems:"center"}}>
+                            {/* <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center",alignItems:"center"}}>
                                 <img id={styles.prof_pic} alt="Profile picture"/>
                                 <p>Account</p>
-                            </Box>
+                            </Box> */}
+                            <ListItemIcon>
+                                <AccountCircleIcon/>
+                            </ListItemIcon>
+                            Profile
                         </MenuItem>
                     </Link>  
                     <Divider/>

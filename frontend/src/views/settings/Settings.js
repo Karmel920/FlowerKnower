@@ -2,8 +2,8 @@ import React from "react";
 import styles from '../../public/modules/settings.module.css';
 import Header from "../../public/components/Header";
 import Confirmation from "../../public/components/Confirmation";
-import { Divider } from "@mui/material";
-import { Box } from "@mui/system";
+// import { Divider } from "@mui/material";
+// import { Box } from "@mui/system";
 function Settings(){
 
     const [openConfirmation, setOpenConfirmation] = React.useState(false);
