@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './drop-file-input.module.css';
-
+import {Link} from 'react-router-dom';
+import image from '../../collection/components/daisy.jpg';
 function DropFileInput(){
-
     const [dragActive, setDragActive] = React.useState(false);
     const inputRef = React.useRef(null);
     const onButtonClick = () =>{
@@ -46,7 +46,9 @@ function DropFileInput(){
                 </label>
                 {/* {dragActive && <div id={styles.dragFileElement} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></div>} */}
             </div>
-            <button id={styles.uploadButton} type="submit">Identify</button>
+            <Link className={styles.link} to='/identify' state={{img: image}}>
+                <button id={styles.uploadButton} type="submit">Identify</button>
+            </Link>
         </form>
     );
 }

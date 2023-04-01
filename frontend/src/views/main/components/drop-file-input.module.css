@@ -59,7 +59,7 @@
     font-size: 24px;
     color: #000000;
     margin-top: 2em;
-    width: 40%;
+    width: 100%;
     cursor: pointer;
     align-self: center;
 }
@@ -97,4 +97,8 @@
     right: 0px;
     bottom:0px;
     left:0px; */
+}
+.link{
+    width:40%;
+    align-self: center;
 }

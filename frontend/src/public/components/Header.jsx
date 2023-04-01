@@ -35,7 +35,7 @@ function Header({title}){
             <div className= {styles.rightControl}>
                 <div className={styles.flowerNumContainer}>
                     <p className={styles.text}>2</p>
-                    <Tooltip title="Number of unique flowers you've already discovered">
+                    <Tooltip title="Number of unique plants you've already discovered">
                         <LocalFloristIcon sx={{ml:"1ch"}}/>
                     </Tooltip>
                 </div>

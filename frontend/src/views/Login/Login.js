@@ -13,8 +13,8 @@ function Login(){
                     <img id={styles.mainLogo} src={MainLogo} alt="Main logo"/>
                     <p className={styles.mainText}>Login to Your Account</p>
                     <form className={styles.loginForm}>
-                        <input id={styles.emailInput} placeholder="Email" type="email"/>
-                        <input id={styles.passwordInput} placeholder="Password" type="password"/>
+                        <input id={styles.emailInput} placeholder="Email" type="email" name="email"/>
+                        <input id={styles.passwordInput} placeholder="Password" type="password" name="password"/>
                         <button id={styles.loginButton}  type="submit">Sign in</button>
                     </form>
                 </div>

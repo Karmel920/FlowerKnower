@@ -29,7 +29,7 @@ function Account({photo}){
                         <div id={styles.picture} style={{backgroundImage:`url(${photo_url})`}}></div>
                         <Button variant="contained" component="label">
                             Choose photo
-                            <input hidden accept="image/*" type="file" onChange={previewPhoto}/>
+                            <input hidden accept="image/*" type="file" onChange={previewPhoto} name="picture"/>
                         </Button>
                     </div>
                     <p className={styles.emailText}>example@gmail.com</p>

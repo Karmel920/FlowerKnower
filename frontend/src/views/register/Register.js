@@ -13,9 +13,9 @@ function Register(){
                     <img id={styles.logo} src={MainLogo} alt="Main logo"/>
                     <p className={styles.mainText}>Create an Account</p>
                     <form className={styles.loginForm}>
-                        <input id={styles.emailInput} placeholder="Email" type="email"/>
-                        <input id={styles.passwordInput} placeholder="Password" type="password"/>
-                        <input id={styles.repeatPasswordInput} placeholder="Repeat password" type="password"/>
+                        <input id={styles.emailInput} placeholder="Email" type="email" name="email"/>
+                        <input id={styles.passwordInput} placeholder="Password" type="password" name="password"/>
+                        <input id={styles.repeatPasswordInput} placeholder="Repeat password" type="password" name="repeat_password"/>
                         <button id={styles.registerButton} type="submit">Sign up</button>
                     </form>
                 </div>
