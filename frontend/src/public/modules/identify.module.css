@@ -1,0 +1,96 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
+}
+.main{
+    display:grid;
+    grid-template-columns: 0.5fr 2fr;
+    width:100%;
+    height:100%;
+}
+.section{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3ch;
+}
+#plantImage{
+    border-radius:30px;
+    width: 360px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+}
+.text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    color: #000000;
+}
+.descriptionText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: justify;
+    color: #000000;
+}
+.plantInfoContainer{
+    margin-top: 2ch;
+    width:60%;
+    display:flex;
+    flex-direction: column;
+}
+.plantInfoHeader{
+    display:flex;
+    justify-content: space-between;
+}
+.plantInfoDescription{
+    height:11ch;
+    overflow-y: scroll;
+}
+#nextButton{
+    background: #ffffff;
+    border: 3px solid #32CE2F;
+    border-radius: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    color: #000000;
+    margin-top: 2em;
+    width: 100%;
+    cursor: pointer;
+    align-self: center;
+}
+#nextButton:hover{
+    background:#55db52;
+    color:#ffffff;
+}
+.link{
+    width:40%;
+    align-self: center;
+}
+.locationButton{
+    background: #DEE9DC;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    color:black;
+    border: none;
+}
+.locationButton:hover{
+    border: 1px solid black;
+    background:white;
+}
