@@ -1,0 +1,23 @@
+.container{
+    width:100vw;
+    height: 100vh;
+    overflow:hidden;
+}
+.mainMapPanel{
+    width:100%;
+    display:flex;
+    position:relative;
+}
+.mapContainer{
+    width:100%;
+    position:absolute;
+    top:0px;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin-top:5ch;
+}
+.mapHeader{
+    position:absolute;
+    width:100%;
+}
