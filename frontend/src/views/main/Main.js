@@ -6,7 +6,7 @@ import DropFileInput from './components/DropFileInput';
 // Investigate plant
 
 function Main(){
-    // const fileTypes = ["JPG","PNG"];
+
     return(
         <div className={styles.container}>
             <header style={{verticalAlign:"top"}}><Header title={"Identify plants"}/></header>
