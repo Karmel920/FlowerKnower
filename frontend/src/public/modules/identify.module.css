@@ -94,3 +94,14 @@
     border: 1px solid black;
     background:white;
 }
+.mapPopup{
+    position:absolute;
+    top:50%;
+    left: 55%;
+    transform: translate(-50%,-50%);
+    width:60%;
+    height:70%;
+    border: 5px solid black;
+    display:flex;
+    flex-direction: column;
+}
