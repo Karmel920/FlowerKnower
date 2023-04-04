@@ -33,7 +33,7 @@ function Navbar(){
                 <Box sx={{display:"flex",flexDirection:"column"}}>
                     <List>
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/">
+                            <Link to="/" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Identify plants"/>
                                 </ListItemButton>
@@ -41,14 +41,14 @@ function Navbar(){
                         </ListItem>
         
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/collection">
+                            <Link to="/collection" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Your plants"/>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/map">
+                            <Link to="/map" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Map of discoveries"/>
                                 </ListItemButton>
