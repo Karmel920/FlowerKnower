@@ -1,7 +1,7 @@
 # FlowerKnower
 
 ### Setup
-1. Copy .env.template to .env
+1. Copy .env.sample to .env
 2. Set values in .env file
 
 ### Run
