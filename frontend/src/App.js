@@ -8,6 +8,7 @@ import Account from './views/account/Account';
 import Collection from './views/collection/Collection';
 import Map from './views/map/Map';
 import Identify from './views/identify/Identify';
+
 function App() {
   return (
 
