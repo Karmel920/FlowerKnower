@@ -117,3 +117,19 @@ input{
 .link{
     width:100%;
 }
+.errorText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width:100%;
+    color: red;
+}
+.successText{
+    font-family: 'Poppins';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    color: green;
+}
