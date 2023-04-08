@@ -6,7 +6,7 @@ import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Logout, Settings } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Link} from 'react-router-dom';
-function Header({title}){
+function Header({logoutAction, title}){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -18,6 +18,9 @@ function Header({title}){
         setAnchorEl(null);
     }
 
+    const handleLogout = () => {
+        logoutAction();
+    }
     return(
         <div className={styles.topBar}>
             <div className={styles.leftControl}>
@@ -100,7 +103,7 @@ function Header({title}){
                         </MenuItem>
                     </Link>
                     <Link to="/login">
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleLogout}>
                             <ListItemIcon>
                                 <Logout/>
                             </ListItemIcon>
