@@ -8,30 +8,79 @@ import { Button, Tooltip } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import CloseIcon from '@mui/icons-material/Close';
 import {IconButton} from '@mui/material';
+import L from 'leaflet'
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
 function Identify(){
 
     const location = useLocation();
     const {img} = location.state;
 
-    const [mapLocation, setMapLocation] = React.useState(null);
     const [showMapPopup, setShowMapPopup] = React.useState(false);
-
-    const handleMapClick = (event) => {
-        // const {latlng} = event;
-        // setMapLocation(latlng);
-        console.log("Klikłem");
-    }
-
     const handleAddLocalizationClick = () => {
         setShowMapPopup(true);
     }
-
     const handleCloseMapPopup = () => {
         setShowMapPopup(false);
+        handleClick();
     }
     
+    const markerIconConst = L.icon({
+        iconUrl: markerIcon,
+        iconRetinaUrl: markerIcon,
+        iconAnchor: null,
+        shadowUrl: null,
+        shadowSize: null,  
+        shadowAnchor: null,
+        iconSize: [24, 41],
+    });
+
+    const [draggable, setDraggable] = React.useState(false);
+    const [position, setPosition] = React.useState([50.06540687121868, 19.939021772031865]);
+    const markerRef = React.useRef(null);
+    const eventHandlers = React.useMemo(
+        () => ({
+            dragend(){
+                const marker = markerRef.current;
+                if(marker != null){
+                    setPosition(marker.getLatLng());
+                }
+            },
+        }),
+        [],
+    );
+    const toggleDraggable = React.useCallback(()=>{
+        setDraggable((d) => !d);
+    },[]);
+    React.useEffect(()=>{
+        console.log(position);
+        setPosition(position);
+    },[position],[showMapPopup]);
+
+    const [open,setOpen] = React.useState(false);
+    const handleClick = () => {
+        setOpen(true);
+    }
+    const handleClose = (event,reason) => {
+        if(reason === 'clickaway'){
+            return;
+        }
+        setOpen(false);
+    }
+
     return(
         <div className={styles.container}>
+            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{width:"100%"}}>
+                    Discovery location has been saved!
+                </Alert>
+            </Snackbar>
             <header style={{verticalAlign:"top"}}><Header title={"Identify plant"}/></header>
             <div className={styles.main}>
                 <Navbar/>
@@ -46,6 +95,7 @@ function Identify(){
 
                             {showMapPopup && (
                                 <div className = {styles.mapPopup}>
+                                    <Alert severity="info">Click on the marker to make it draggable and to save location simply close map</Alert>
                                     <Tooltip title="Close map">
                                         <IconButton onClick={handleCloseMapPopup} sx={{position:"fixed",alignSelf:"flex-end", zIndex:2}}>
                                             <CloseIcon/>
@@ -54,23 +104,27 @@ function Identify(){
                                     <MapContainer
                                         center={[50.06540687121868, 19.939021772031865]}
                                         zoom = {13}
-                                        onClick={handleMapClick}
                                         style={{width:'100%', height:"100%", zIndex:1}}
+                                        zoomControl={false}
                                     >
-                                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" /> 
-
-                                            {mapLocation && (
-                                                <Marker position={mapLocation}>
-                                                    <Popup>
-                                                        <span>You added marker at: {mapLocation.lat}, {mapLocation.lng}</span>
-                                                    </Popup>
-                                                </Marker>
-                                            )}
+                                        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>   
+                                        <Marker
+                                            draggable={draggable}
+                                            eventHandlers={eventHandlers}
+                                            position={position}
+                                            ref={markerRef}
+                                            icon={markerIconConst}>
+                                            <Popup minWidth={90}>
+                                                <span onClick={toggleDraggable}>
+                                                    {draggable
+                                                    ? 'Marker is draggable'
+                                                    : 'Click here to make marker draggable'}
+                                                </span>
+                                            </Popup>
+                                        </Marker>
                                     </MapContainer>
                                 </div>
                             )}
-
-
 
                         </div>
                         <div className={styles.plantInfoDescription}>
