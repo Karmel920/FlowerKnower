@@ -18,7 +18,7 @@ function Map(){
         shadowUrl: null,
         shadowSize: null,  
         shadowAnchor: null,
-        iconSize: [35, 35],
+        iconSize: [24, 41],
     });
 
     return(    
