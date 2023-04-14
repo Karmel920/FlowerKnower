@@ -11,7 +11,7 @@ services:
     env_file: ./.env
     ports:
       - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-    restart: always
+    restart: unless-stopped
     depends_on:
       - flowerknower-db # This service depends on mysql. Start that first.
     environment: # Pass environment variables to the service
@@ -32,7 +32,7 @@ services:
         REACT_APP_API_BASE_URL: http://127.0.0.1:8080/api/v1
     ports:
       - "9090:80" # Map the exposed port 80 on the container to port 9090 on the host machine
-    restart: always
+    restart: unless-stopped
     depends_on:
       - app-server
     networks:
@@ -43,7 +43,7 @@ services:
   flowerknower-db:
     image: "postgres:15.2-alpine"
     container_name: flowerknower-db
-    restart: always
+    restart: unless-stopped
     env_file: ./.env
     ports:
       - "5432:5432"
