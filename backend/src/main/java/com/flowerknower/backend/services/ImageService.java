@@ -1,10 +1,10 @@
 package com.flowerknower.backend.services;
 
+import com.flowerknower.backend.repositories.ImageRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.flowerknower.backend.model.entities.Image;
-import com.flowerknower.backend.repositories.ImageRepository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +20,7 @@ public class ImageService {
     private final ImageRepository imageRepository;
     @Value("${img.path}")
     private String PATH;
-
+    
     public Image uploadImage(MultipartFile file) throws IOException {
         String fullPath=PATH+file.getOriginalFilename();
         Image image = Image.builder()

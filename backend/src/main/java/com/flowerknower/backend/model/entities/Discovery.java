@@ -1,6 +1,5 @@
 package com.flowerknower.backend.model.entities;
 
-import com.flowerknower.backend.model.records.Localisation;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,13 +13,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Plant {
+public class Discovery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "plant_id")
+    @JoinColumn(name = "image_id")
     private Image image;
 
     private String name;
@@ -31,5 +30,8 @@ public class Plant {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Localisation localisation;
+    @OneToOne
+    @JoinColumn(name = "loc_id")
+    private DiscoveryLocation localisation;
+
 }

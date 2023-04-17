@@ -1,6 +1,7 @@
 package com.flowerknower.backend.controllers;
 
-import com.flowerknower.backend.model.requests.*;
+import com.flowerknower.backend.model.requests.AuthenticationRequest;
+import com.flowerknower.backend.model.requests.RegisterRequest;
 import com.flowerknower.backend.model.responses.*;
 import com.flowerknower.backend.services.authentication.AuthenticationService;
 
