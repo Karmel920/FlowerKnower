@@ -54,13 +54,13 @@ backend/build/
 ## ML Backend
 
 # Byte-compiled / optimized / DLL files
-ml/__pycache__/
-ml/*.py[cod]
-ml/*$py.class
+ml/**/__pycache__/
+ml/**/*.py[cod]
+ml/**/*$py.class
 
 # Installer logs
-ml/pip-log.txt
-ml/pip-delete-this-directory.txt
+ml/**/pip-log.txt
+ml/**/pip-delete-this-directory.txt
 
 
 
