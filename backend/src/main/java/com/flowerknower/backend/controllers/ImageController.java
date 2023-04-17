@@ -32,8 +32,5 @@ public class ImageController {
 		byte[] image = imageService.downloadImage(fileName);
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
 	}
-    @GetMapping
-    public String testingFunc() {
-        return "test";
-    }
+
 }

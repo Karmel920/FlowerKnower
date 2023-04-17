@@ -32,6 +32,6 @@ public class Discovery {
 
     @OneToOne
     @JoinColumn(name = "loc_id")
-    private DiscoveryLocation localisation;
+    private DiscoveryLocation location;
 
 }

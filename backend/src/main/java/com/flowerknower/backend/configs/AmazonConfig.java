@@ -15,18 +15,18 @@ public class AmazonConfig {
     private static String SECRET_KEY;
 
     @Value("${aws.key}")
-    public static void setAccessKey(String accessKey) {
-        ACCESS_KEY = accessKey;
+    public void setAccessKey(String accessKey) {
+        AmazonConfig.ACCESS_KEY = accessKey;
     }
     @Value("${aws.secret}")
-    public static void setSecretKey(String secretKey) {
-        SECRET_KEY = secretKey;
+    public void setSecretKey(String secretKey) {
+        AmazonConfig.SECRET_KEY = secretKey;
     }
 
     @Bean
     public AmazonS3 s3() {
         AWSCredentials awsCredentials =
-                new BasicAWSCredentials(ACCESS_KEY, SECRET_KEY);
+                new BasicAWSCredentials(AmazonConfig.ACCESS_KEY, AmazonConfig.SECRET_KEY);
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion("eu-north-1")
