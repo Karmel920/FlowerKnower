@@ -40,12 +40,6 @@ backend/.settings
 backend/.springBeans
 backend/.sts4-cache
 
-### IntelliJ IDEA ###
-*.idea
-*.iws
-*.iml
-*.ipr
-
 ### NetBeans ###
 backend/nbproject/private/
 backend/nbbuild/
@@ -56,7 +50,26 @@ backend/build/
 !backend/**/src/main/**/build/
 !backend/**/src/test/**/build/
 
+
+## ML Backend
+
+# Byte-compiled / optimized / DLL files
+ml/**/__pycache__/
+ml/**/*.py[cod]
+ml/**/*$py.class
+
+# Installer logs
+ml/**/pip-log.txt
+ml/**/pip-delete-this-directory.txt
+
+
+
 ### VS Code ###
 *.vscode/
+### IntelliJ IDEA ###
+*.idea
+*.iws
+*.iml
+*.ipr
 
 .env
