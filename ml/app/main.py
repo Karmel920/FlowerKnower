@@ -39,6 +39,7 @@ async def predict(image: ImageURL):
         return {"message": "No image link provided"}
 
     image = load_image_from_url(image)
+    image = decode_image(image)
     image = preprocess_image(image)
     return make_prediction(image)
 
