@@ -1,5 +1,4 @@
 import os
-
 import tensorflow_hub as hub
 import numpy as np
 
