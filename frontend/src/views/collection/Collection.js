@@ -5,11 +5,16 @@ import Navbar from "../../public/components/Navbar";
 import Species from "./components/Species";
 import { Divider } from "@mui/material";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router";
 function Collection(){
-
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.setItem('token',"");
+        navigate("/login");
+    }
     return(
         <div className={styles.container}>
-            <header style={{verticalAlign:"top"}}><Header title={"Your plants"}/></header>
+            <header style={{verticalAlign:"top"}}><Header title={"Your plants"} logoutAction={handleLogout}/></header>
             <div className={styles.main}>
                 <Navbar/>
                 <div className={styles.section}>

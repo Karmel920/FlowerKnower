@@ -3,8 +3,9 @@ import styles from '../../public/modules/account.module.css';
 import Header from "../../public/components/Header";
 import { Button } from "@mui/material";
 import BasicPhoto from '../../public/img/basic_photo.svg'
+import { useNavigate } from "react-router";
 function Account({photo}){
-
+    const navigate = useNavigate();
     const [photo_url, setPhotoUrl] = React.useState(photo);
     const previewPhoto = (event) => {
             const choseFile = event.target.files[0];
@@ -19,10 +20,13 @@ function Account({photo}){
     if(photo_url === ''){
         setPhotoUrl(BasicPhoto);
     }
-
+    const handleLogout = () => {
+        localStorage.setItem('token',"");
+        navigate("/login");
+    }
     return(
         <div className={styles.container}> 
-            <header><Header title={"Profile"}/></header>
+            <header><Header title={"Profile"} logoutAction={handleLogout}/></header>
             <main className={styles.main}>
                 <form className={styles.accountForm} action="" encType='multipart/form-data'>
                     <div className={styles.profilePicture}>

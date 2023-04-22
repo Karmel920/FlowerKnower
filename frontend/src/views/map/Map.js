@@ -5,7 +5,9 @@ import styles from '../../public/modules/map.module.css';
 import L from 'leaflet'
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import { Box } from "@mui/material";
+import { useNavigate } from "react-router";
 function Map(){
+    const navigate = useNavigate();
     const location = [50.06540687121868, 19.939021772031865];
 
     const position = [[50.08947142414942, 19.920571577678686],
@@ -20,10 +22,14 @@ function Map(){
         shadowAnchor: null,
         iconSize: [24, 41],
     });
-
+    
+    const handleLogout = () => {
+        localStorage.setItem('token',"");
+        navigate("/login");
+    }
     return(    
         <div className={styles.container}>
-            <header className={styles.mapHeader}><Header title={"Map of discoveries"} style={{position:"fixed",top:0}}/> </header>
+            <header className={styles.mapHeader}><Header title={"Map of discoveries"} logoutAction={handleLogout} style={{position:"fixed",top:0}}/> </header>
             <main className={styles.mainMapPanel}>
                 <div className={styles.mapContainer}>
                     <MapContainer
