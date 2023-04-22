@@ -12,15 +12,15 @@ import L from 'leaflet'
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-
+import { useNavigate } from 'react-router';
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
 function Identify(){
-
+    const navigate = useNavigate();
     const location = useLocation();
-    const {img} = location.state;
+    const {img, prediction} = location.state;
 
     const [showMapPopup, setShowMapPopup] = React.useState(false);
     const handleAddLocalizationClick = () => {
@@ -73,7 +73,10 @@ function Identify(){
         }
         setOpen(false);
     }
-
+    const handleLogout = () => {
+        localStorage.setItem('token',"");
+        navigate("/login");
+    }
     return(
         <div className={styles.container}>
             <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
@@ -81,14 +84,14 @@ function Identify(){
                     Discovery location has been saved!
                 </Alert>
             </Snackbar>
-            <header style={{verticalAlign:"top"}}><Header title={"Identify plant"}/></header>
+            <header style={{verticalAlign:"top"}}><Header title={"Identify plant"} logoutAction={handleLogout}/></header>
             <div className={styles.main}>
                 <Navbar/>
                 <div className={styles.section}>
                     <div id={styles.plantImage} style={{backgroundImage:`url(${img})`}}/>
                     <div className={styles.plantInfoContainer}>
                         <div className={styles.plantInfoHeader}>
-                            <p className={styles.text}>You found: Daisy</p>
+                            <p className={styles.text}>You found: {prediction.charAt(0).toUpperCase()+prediction.slice(1)}</p>
                             <Button className={styles.locationButton} variant="outlined" endIcon={<AddLocationIcon/>} onClick={handleAddLocalizationClick}>
                                 Add discovery location
                             </Button>
@@ -130,7 +133,7 @@ function Identify(){
                         <div className={styles.plantInfoDescription}>
                             <p className={styles.descriptionText}>Bellis perennis - the daisy, is a European species of the family Asteraceae, often considered the archetypal species of the name daisy. To distinguish this species from other plants known as daisies, it is sometimes qualified as common daisy, lawn daisy or English daisy.</p>
                         </div>
-                        <Link className={styles.link} to="/">
+                        <Link className={styles.link} to="/main">
                             <button id={styles.nextButton} type="button">OK</button>
                         </Link>
                     </div>
