@@ -24,7 +24,7 @@ function Header({logoutAction, title}){
     return(
         <div className={styles.topBar}>
             <div className={styles.leftControl}>
-                <Link to="/">
+                <Link to="/main">
                     <Tooltip title="Get back to main panel">
                         <IconButton size='large' sx={{ml:1, width:"5ch", borderRadius:"30px"}}>
                             <HomeIcon/>

@@ -14,8 +14,9 @@ function App() {
 
     <Routes>
         <Route path='/login' element={<Login/>} />
+        <Route path='/' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
-        <Route path='/' element={<Main/>} />
+        <Route path='/main' element={<Main/>} />
         <Route path="/settings" element={<Settings/>} />
         <Route path="/account" element={<Account photo={''}/>} />
         <Route path="/collection" element={<Collection/>}/>

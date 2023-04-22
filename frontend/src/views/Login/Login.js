@@ -24,7 +24,7 @@ function Login(){
 
     React.useEffect(()=>{
         if(localStorage.getItem('token') !== '' && localStorage.getItem('token') != null){
-            navigate('/');
+            navigate('/main');
         }
     },[])
 
@@ -47,7 +47,7 @@ function Login(){
                 setSpinner(false);
                 setIsSubmitting(false);
                 localStorage.setItem('token', response.data.token);
-                navigate("/");
+                navigate("/main");
             })
             .catch(error =>{
                 setSpinner(false);
