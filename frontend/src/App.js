@@ -8,6 +8,7 @@ import Account from './views/account/Account';
 import Collection from './views/collection/Collection';
 import Map from './views/map/Map';
 import Identify from './views/identify/Identify';
+import Info from './views/info/Info';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/collection" element={<Collection/>}/>
         <Route path="/map" element={<Map/>}/>
         <Route path="/identify" element={<Identify/>}/>
+        <Route path="/info" element={<Info/>}/>
     </Routes>
 
   );
