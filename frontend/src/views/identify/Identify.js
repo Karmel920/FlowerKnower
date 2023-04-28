@@ -133,9 +133,13 @@ function Identify(){
                         <div className={styles.plantInfoDescription}>
                             <p className={styles.descriptionText}>Bellis perennis - the daisy, is a European species of the family Asteraceae, often considered the archetypal species of the name daisy. To distinguish this species from other plants known as daisies, it is sometimes qualified as common daisy, lawn daisy or English daisy.</p>
                         </div>
-                        <Link className={styles.link} to="/main">
-                            <button id={styles.nextButton} type="button">OK</button>
-                        </Link>
+                        <div className={styles.buttonsDiv}>
+                            {/* zamiast link to navigate w hook'u */}                            
+                            <Link className={styles.link} to="/main">
+                                <button id={styles.nextButton} type="button">OK</button>
+                            </Link>
+                            <button id={styles.saveButton} type="button">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>

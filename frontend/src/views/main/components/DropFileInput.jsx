@@ -1,11 +1,18 @@
 import React from "react";
 import styles from './drop-file-input.module.css';
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import {Box} from "@mui/system";
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
 function DropFileInput(){
     const navigate = useNavigate();
     const [dragActive, setDragActive] = React.useState(false);
@@ -13,6 +20,8 @@ function DropFileInput(){
     const [imageObject, setImageObject] = React.useState(null);
     const [modelPrediction, setModelPrediction] = React.useState('');
     const [spinner, setSpinner] = React.useState(false);
+    const [openErrorSnackbar, setOpenErrorSnackbar] = React.useState(false);
+
     const inputRef = React.useRef(null);
     const onButtonClick = () =>{
         if(!image)
@@ -53,6 +62,14 @@ function DropFileInput(){
         }
     };
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setOpenErrorSnackbar(false);
+      };
+    
+
     const handleSubmit = (e) => {
         setSpinner(true);
         e.preventDefault();
@@ -66,13 +83,18 @@ function DropFileInput(){
             setModelPrediction(response.data.predicted_class);
             setSpinner(false);
         }).catch(error=>{
-            console.log(error);
             setSpinner(false);
+            setOpenErrorSnackbar(true);
         })
     }
 
     return(
         <form id={styles.formFileUpload} onDragEnter={handleDrag} onSubmit={handleSubmit}>
+            <Snackbar anchorOrigin={{vertical: 'bottom', horizontal:'left'}} open={openErrorSnackbar} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                     No image has been uploaded
+                </Alert>
+            </Snackbar>
             <input ref={inputRef} name="plant_image" type="file" id="input-file-upload" encType='multipart/form-data' style={{display:"none"}} onChange={handleChange} accept="image/jpeg, image/jpg, image/png" multiple={false} disabled={!!image}/>
             <label id={dragActive ? styles.labelFileUpload_active : styles.labelFileUpload} htmlFor="input-file-upload">
                 <div>
