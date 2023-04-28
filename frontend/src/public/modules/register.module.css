@@ -18,7 +18,10 @@
     -moz-box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
     box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
 }
-
+#logo{
+    width:150px;
+    height:150px;
+}
 .loginPanel{
     height:100vh;
     background: #FDFFFE;

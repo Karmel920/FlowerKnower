@@ -55,7 +55,7 @@
     height:11ch;
     overflow-y: scroll;
 }
-#nextButton{
+#nextButton, #saveButton{
     background: #ffffff;
     border: 3px solid #32CE2F;
     border-radius: 30px;
@@ -65,16 +65,16 @@
     font-size: 24px;
     color: #000000;
     margin-top: 2em;
-    width: 100%;
+    width: 70%;
     cursor: pointer;
     align-self: center;
 }
-#nextButton:hover{
+#nextButton:hover, #saveButton:hover{
     background:#55db52;
     color:#ffffff;
 }
 .link{
-    width:40%;
+    width: 100%;
     align-self: center;
 }
 .locationButton{
@@ -104,4 +104,9 @@
     border: 5px solid black;
     display:flex;
     flex-direction: column;
+}
+.buttonsDiv{
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
 }

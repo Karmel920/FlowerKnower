@@ -52,10 +52,7 @@ function Login(){
             .catch(error =>{
                 setSpinner(false);
                 setIsSubmitting(false);
-                // console.log(error.response.status);
-                // if(error.response.status !== undefined){
-                    setValidationErrors([{message:"Wrong email or password"}]);
-                // }
+                setValidationErrors([{message:"Wrong email or password"}]);
             });
     }
 

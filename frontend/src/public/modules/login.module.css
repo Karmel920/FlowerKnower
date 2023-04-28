@@ -35,7 +35,10 @@
     flex-direction: column;
     width:50%;
 }
-
+#mainLogo{
+    width:150px;
+    height:150px;
+}
 input{
     
     background: rgba(217,217,217,0.4);
