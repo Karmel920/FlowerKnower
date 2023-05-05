@@ -11,7 +11,6 @@ def load_image_from_url(image_url):
 
 
 def decode_image(img):
-    # PIL.UnidentifiedImageError: cannot identify image file <_io.BytesIO object at ...>
     return load_img(BytesIO(img.read()))
 
 

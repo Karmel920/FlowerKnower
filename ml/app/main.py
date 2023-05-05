@@ -2,11 +2,26 @@ import uvicorn
 
 from fastapi import FastAPI, File, UploadFile
 from pydantic import BaseModel
+from starlette.middleware.cors import CORSMiddleware
 
+from app.flower_description import get_description
 from app.image_preprocessing import preprocess_image, load_image_from_url, decode_image
 from app.neural_network import make_prediction
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:8080",
+    "http://localhost:9090"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class ImageURL(BaseModel):
@@ -15,7 +30,7 @@ class ImageURL(BaseModel):
 
 @app.get('/')
 def index():
-    return {'message': 'Hello, World'}
+    return {'message': 'Flower prediction'}
 
 
 @app.post("/predict/img")
@@ -29,7 +44,8 @@ async def predict(image: UploadFile = File(...)):
 
     image_pred = decode_image(image.file)
     image_pred = preprocess_image(image_pred)
-    return make_prediction(image_pred)
+
+    return get_flower_data_from_image(image_pred)
 
 
 @app.post("/predict/url")
@@ -41,7 +57,14 @@ async def predict(image: ImageURL):
     image = load_image_from_url(image)
     image = decode_image(image)
     image = preprocess_image(image)
-    return make_prediction(image)
+
+    return get_flower_data_from_image(image)
+
+
+def get_flower_data_from_image(image):
+    flower_name = make_prediction(image)
+    flower_description = get_description("rose")
+    return {"predicted_class": flower_name, "description": flower_description}
 
 
 if __name__ == '__main__':

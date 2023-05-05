@@ -6,3 +6,4 @@ pydantic~=1.10.7
 opencv-python==4.7.0.72
 Pillow~=9.5.0
 python-multipart==0.0.6
+Wikipedia-API==0.5.8

@@ -28,7 +28,4 @@ def make_prediction(image):
     predicted_label = np.argmax(predicted)
 
     pred_class = flower_categories[predicted_label]
-
-    data = {"predicted_class": pred_class}
-
-    return data
+    return pred_class
