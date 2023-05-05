@@ -1,5 +1,6 @@
 import os
 
+import wikipediaapi
 import tensorflow_hub as hub
 import numpy as np
 
@@ -19,6 +20,9 @@ def load_model_pred():
 
 model = load_model_pred()
 
+# initialize Wikipedia object in english
+wiki_wiki = wikipediaapi.Wikipedia('en')
+
 
 def make_prediction(image):
     global model
@@ -31,6 +35,12 @@ def make_prediction(image):
 
     pred_class = flower_categories[predicted_label]
 
-    data = {"predicted_class": pred_class}
+    # Calling the Wikipedia api to return the description of the flower
+    description = ''
+    page_pred = wiki_wiki.page(pred_class)
+    if page_pred.exists():
+        description = page_pred.summary
+
+    data = {"predicted_class": pred_class, "description": description}
 
     return data

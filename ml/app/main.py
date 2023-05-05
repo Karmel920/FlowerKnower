@@ -1,12 +1,21 @@
 # import uvicorn
 
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
-from app.image_preprocessing import preprocess_image
+from app.image_preprocessing import preprocess_image_url, preprocess_image_img
 from app.neural_network import make_prediction
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class Image(BaseModel):
@@ -19,9 +28,9 @@ def index():
 
 
 @app.post("/predict/img")
-async def predict(image: Image):
-    image = image.image
-    image = preprocess_image(image)
+async def predict(image: UploadFile):
+    image = image.file
+    image = preprocess_image_img(image)
     return make_prediction(image)
 
 
@@ -30,8 +39,7 @@ async def predict(image: Image):
     image = image.image
     if image == "":
         return {"message": "No image link provided"}
-
-    image = preprocess_image(image)
+    image = preprocess_image_url(image)
     return make_prediction(image)
 
 
