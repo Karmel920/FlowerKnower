@@ -33,7 +33,7 @@ function Navbar(){
                 <Box sx={{display:"flex",flexDirection:"column"}}>
                     <List>
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/" className={styles.link}>
+                            <Link to="/main" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Identify plants"/>
                                 </ListItemButton>
