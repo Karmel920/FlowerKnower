@@ -5,6 +5,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Logout, Settings } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import InfoIcon from '@mui/icons-material/Info';
 import {Link} from 'react-router-dom';
 function Header({logoutAction, title}){
 
@@ -83,10 +84,6 @@ function Header({logoutAction, title}){
                 >
                     <Link to="/account">
                         <MenuItem onClick={handleClose}>
-                            {/* <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center",alignItems:"center"}}>
-                                <img id={styles.prof_pic} alt="Profile picture"/>
-                                <p>Account</p>
-                            </Box> */}
                             <ListItemIcon>
                                 <AccountCircleIcon/>
                             </ListItemIcon>
@@ -100,6 +97,14 @@ function Header({logoutAction, title}){
                                 <Settings/>
                             </ListItemIcon>
                             Settings
+                        </MenuItem>
+                    </Link>
+                    <Link to="/info">
+                        <MenuItem onClick={handleClose}>
+                            <ListItemIcon>
+                                <InfoIcon/>
+                            </ListItemIcon>
+                            Information
                         </MenuItem>
                     </Link>
                     <Link to="/login">

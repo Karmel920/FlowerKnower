@@ -145,3 +145,14 @@ input{
     width: 100%;
     color: green;
 }
+#infoButton{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    width: 90%;
+    transition: color .3s ease-in-out
+}
+#infoButton:hover{
+    color: white;
+}

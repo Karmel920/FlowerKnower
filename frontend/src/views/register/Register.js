@@ -104,6 +104,7 @@ function Register(){
                     <p className={styles.firstText}>Already have an account?</p>
                     <p className={styles.secondText}>Sign in and enjoy the application</p>
                     <Link className={styles.link} to="/login"><button id={styles.loginButton} type="button">Sign in</button></Link>
+                    <Link className={styles.link} to="/info"><button id={styles.infoButton} type="button">Want to learn more about app? Click here!</button></Link>
                     <img id={styles.logo2} src={SideLogo} alt="Side logo"/>
                 </div>
             </div>

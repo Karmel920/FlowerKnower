@@ -77,6 +77,7 @@ function Login(){
                     <p className={styles.firstText}>New here?</p>
                     <p className={styles.secondText}>Sign up and discover a great amount of opportunities</p>
                     <Link className={styles.link} to="/register"><button id={styles.registerButton} type="button">Sign up</button></Link>
+                    <Link className={styles.link} to="/info"><button id={styles.infoButton} type="button">Want to learn more about app? Click here!</button></Link>
                     <img id={styles.sideLogo} src={SideLogo} alt="Side logo"/>
                 </div>
             </div>
