@@ -10,6 +10,7 @@ COPY requirements.txt .
 # Install application dependencies from the requirements file
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 RUN pip install --upgrade tensorflow-hub
+RUN pip install pillow
 
 COPY . .
 
