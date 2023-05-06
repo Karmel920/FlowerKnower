@@ -11,6 +11,9 @@ from .flower_description import get_description
 # large dataset(1000 photots per class) - 5 species
 # flower_categories = ['bellis', 'dandelion', 'rose', 'sunflower', 'tulip']
 
+# Small dataset(200 photos per flower class) - 11 species
+# flower_categories = ['viola_(plant)', 'crocus', 'dandelion', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'tulip']
+
 # Small dataset(200 photos per flower class) - 15 species
 # flower_categories = ['ivy', 'dracaena_(plant)' , 'viola_(plant)', 'crocus' , 'poppy', 'dandelion', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'tulip', 'cherry']
 
