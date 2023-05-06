@@ -11,8 +11,8 @@ from app.neural_network import make_prediction
 app = FastAPI()
 
 origins = [
-    "http://localhost:8080",
-    "http://localhost:9090"
+    "http://localhost:8080", # backend
+    "http://localhost:80" # frontend
 ]
 
 app.add_middleware(
