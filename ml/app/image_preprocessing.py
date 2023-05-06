@@ -23,4 +23,5 @@ def preprocess_image_img(image):
     image_pred = image_pred.resize((224, 224))
     image_pred = np.array(image_pred)
     image_pred = np.expand_dims(image_pred, axis=0)
+
     return image_pred

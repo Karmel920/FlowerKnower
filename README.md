@@ -1,9 +1,5 @@
 # FlowerKnower
 
-### Setup
-1. Copy .env.sample to .env
-2. Set values in .env file
-
 ### Run
 1. Start docker containers in app root directory
   ```
@@ -14,5 +10,4 @@ When you made some changes in config docker file - use additional flag
   docker-compose up --build
   ```
 
-API >> `localhost:8080`<br>
-Client >> `localhost:9090`
+API model >> `localhost:5000`<br>

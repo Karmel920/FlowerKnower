@@ -1,12 +1,12 @@
 import os
 
-import wikipediaapi
 import tensorflow_hub as hub
 import numpy as np
 
 from tensorflow.keras.models import load_model
 
 from app.definitions import MODELS_PATH
+from .flower_description import get_description
 
 flower_categories = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
 
@@ -20,9 +20,6 @@ def load_model_pred():
 
 model = load_model_pred()
 
-# initialize Wikipedia object in english
-wiki_wiki = wikipediaapi.Wikipedia('en')
-
 
 def make_prediction(image):
     global model
@@ -35,11 +32,7 @@ def make_prediction(image):
 
     pred_class = flower_categories[predicted_label]
 
-    # Calling the Wikipedia api to return the description of the flower
-    description = ''
-    page_pred = wiki_wiki.page(pred_class)
-    if page_pred.exists():
-        description = page_pred.summary
+    description = get_description(pred_class)
 
     data = {"predicted_class": pred_class, "description": description}
 
