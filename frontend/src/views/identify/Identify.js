@@ -20,7 +20,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function Identify(){
     const navigate = useNavigate();
     const location = useLocation();
-    const {img, prediction} = location.state;
+    const {img, prediction, description} = location.state;
 
     const [showMapPopup, setShowMapPopup] = React.useState(false);
     const handleAddLocalizationClick = () => {
@@ -131,7 +131,7 @@ function Identify(){
 
                         </div>
                         <div className={styles.plantInfoDescription}>
-                            <p className={styles.descriptionText}>Bellis perennis - the daisy, is a European species of the family Asteraceae, often considered the archetypal species of the name daisy. To distinguish this species from other plants known as daisies, it is sometimes qualified as common daisy, lawn daisy or English daisy.</p>
+                            <p className={styles.descriptionText}>{description}</p>
                         </div>
                         <div className={styles.buttonsDiv}>
                             {/* zamiast link to navigate w hook'u */}                            

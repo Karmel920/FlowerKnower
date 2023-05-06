@@ -19,6 +19,7 @@ function DropFileInput(){
     const [image, setImage] = React.useState(null);
     const [imageObject, setImageObject] = React.useState(null);
     const [modelPrediction, setModelPrediction] = React.useState('');
+    const [modelDescription, setModelDescription] = React.useState('');
     const [spinner, setSpinner] = React.useState(false);
     const [openErrorSnackbar, setOpenErrorSnackbar] = React.useState(false);
 
@@ -29,7 +30,7 @@ function DropFileInput(){
     }
     React.useEffect(()=>{
         if(modelPrediction !== '' && modelPrediction != null){
-            navigate('/identify',{state: {img: image, prediction: modelPrediction}});
+            navigate('/identify',{state: {img: image, prediction: modelPrediction, description: modelDescription}});
         }
     },[modelPrediction]);
 
@@ -81,6 +82,7 @@ function DropFileInput(){
             }
         }).then(response=>{
             setModelPrediction(response.data.predicted_class);
+            setModelDescription(response.data.description);
             setSpinner(false);
         }).catch(error=>{
             setSpinner(false);
