@@ -30,7 +30,7 @@ function Info(){
                         <Divider sx={{borderBottomWidth: 2}}/>
                         <br/>
                         <span>With our model you can classify the following flower species:</span>
-                        <span><b> knapweed, dahlia, viola(plant), echinacea, clover, crocus, daylily, poppy, sword lily, dandelion, calendula, forget-me-not, fern, snowdrop, rose, sunflower, bellis, orchid, muscari, tulip</b></span>
+                        <span><b> viola, crocus, dandelion, forget-me-not, fern, snowdrop, rose, sunflower, bellis, orchid, tulip</b></span>
                     </div>
                 </div>
             </div>
