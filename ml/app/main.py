@@ -45,7 +45,7 @@ async def predict(image: UploadFile):
     if image is None or image.file is None:
         return {"message": "No image provided"}
     
-    extension = image.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    extension = image.filename.split(".")[-1] in ("jpg", "JPG", "jpeg", "png")
     if not extension:
         return {"message": "Please provide an jpg or png image"}
     

@@ -11,6 +11,9 @@ from .flower_description import get_description
 # large dataset(1000 photots per class) - 5 species
 # flower_categories = ['bellis', 'dandelion', 'rose', 'sunflower', 'tulip']
 
+# Small dataset(100 photos per flower class) - 8 species
+flower_categories = ['crocus', 'bellis', 'dandelion', 'pansy', 'rose', 'snowdrop', 'sunflower', 'tulip']
+
 # Small dataset(200 photos per flower class) - 11 species
 # flower_categories = ['viola_(plant)', 'crocus', 'dandelion', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'tulip']
 
@@ -18,11 +21,11 @@ from .flower_description import get_description
 # flower_categories = ['ivy', 'dracaena_(plant)' , 'viola_(plant)', 'crocus' , 'poppy', 'dandelion', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'tulip', 'cherry']
 
 # Small dataset(200 photos per flower class) - 20 species
-flower_categories = ['knapweed', 'dahlia', 'viola_(plant)', 'echinacea', 'clover', 'crocus', 'daylily', 'poppy', 'sword lily', 'dandelion', 'calendula', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'muscari', 'tulip']
+# flower_categories = ['knapweed', 'dahlia', 'viola_(plant)', 'echinacea', 'clover', 'crocus', 'daylily', 'poppy', 'sword lily', 'dandelion', 'calendula', 'forget-me-not', 'fern', 'snowdrop', 'rose', 'sunflower', 'bellis', 'orchid', 'muscari', 'tulip']
 
 
 def load_model_pred():
-    path = os.path.join(MODELS_PATH, 'flowers_20_small_data.h5')
+    path = os.path.join(MODELS_PATH, 'flowers_8_small_data_hq.h5')
     path = path.replace(os.sep, '/')
     load = load_model(path, custom_objects={"KerasLayer": hub.KerasLayer})
     return load
