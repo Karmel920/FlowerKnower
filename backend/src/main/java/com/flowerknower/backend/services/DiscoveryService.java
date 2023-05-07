@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class DiscoveryService {
         Flower predictedFlower = flowerOptional
             .orElseThrow( () -> new RuntimeException("Flower not found in database"));
         Image image = imageService.uploadImage(file);
-        return Discovery.builder().user(user).image(image).flower(predictedFlower).build();
+        return discoveryRepository.save(Discovery.builder().user(user).image(image).flower(predictedFlower).build());
     }
 
     public Discovery getDiscovery(Long discoveryId) {
@@ -41,5 +42,9 @@ public class DiscoveryService {
 
     public List<Discovery> getAllDiscoveriesByUser(User user) {
         return discoveryRepository.findAllByUser(user);
+    }
+
+    public Set<Discovery> getUniqueDiscoveriesByUser(User user) {
+        return discoveryRepository.findFirstDiscoveryForUniqueFlowersByUserSQL(user.getId());
     }
 }

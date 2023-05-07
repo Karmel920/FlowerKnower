@@ -12,18 +12,21 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/discovery")
-@CrossOrigin(origins="http://localhost:3000")
 public class DiscoveryController {
 
     private final DiscoveryService discoveryService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Discovery> submitDiscovery (@AuthenticationPrincipal User user, @RequestParam("image") MultipartFile file, @RequestParam("prediction") String prediction) throws IOException {
+    public ResponseEntity<Discovery> submitDiscovery (@AuthenticationPrincipal User user,
+        @RequestParam("image") MultipartFile file,
+        @RequestParam("prediction") String prediction) throws IOException {
         Discovery discovery = discoveryService.submitDiscovery(file, user, prediction);
         return ResponseEntity.ok(discovery);
     }
@@ -31,5 +34,15 @@ public class DiscoveryController {
     @GetMapping("{discoveryId}")
     public ResponseEntity<Discovery> getDiscovery(@PathVariable Long discoveryId) {
         return ResponseEntity.ok(discoveryService.getDiscovery(discoveryId));
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<Discovery>> getAllDiscoveries(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(discoveryService.getAllDiscoveriesByUser(user));
+    }
+
+    @GetMapping("/unique")
+    public ResponseEntity<Set<Discovery>> getAllUniqueDiscoveries(@AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(discoveryService.getUniqueDiscoveriesByUser(user));
     }
 }
