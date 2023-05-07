@@ -22,9 +22,9 @@ public class Discovery {
     @JoinColumn(name = "image_id")
     private Image image;
 
-    private String name;
-
-    private String data;
+    @ManyToOne
+    @JoinColumn(name = "flower_id")
+    private Flower flower;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
