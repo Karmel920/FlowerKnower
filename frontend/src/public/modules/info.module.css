@@ -43,3 +43,12 @@
     display:flex;
     flex-direction: column;
 }   
+
+.examples{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#imgs{
+   width: 100%;
+}
