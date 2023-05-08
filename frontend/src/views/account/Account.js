@@ -49,7 +49,7 @@ function Account({photo}){
                         </Button>
                     </div>
                     <p className={styles.emailText}>example@gmail.com</p>
-                    <p className={styles.text}>2 species discovered</p>
+                    <p className={styles.text}>{localStorage.getItem('flowersCount')} species discovered</p>
                     <button id={styles.saveBtn} type="submit">Save changes</button>
                 </form>
             </main>
