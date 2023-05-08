@@ -18,9 +18,7 @@ public class DiscoveryLocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double coordinate1;
+    private Double longitude;
 
-    private Double coordinate2;
-
-    private LocalDate date;
+    private Double latitude;
 }

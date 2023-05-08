@@ -21,12 +21,12 @@ public class MapController {
     private final MapService mapService;
     // private final DiscoveryService discoveryService;
 
-    @PostMapping("")
-    public ResponseEntity<DiscoveryLocation> addLocation(@PathVariable Long discoveryId, @RequestBody DiscoveryLocation location) {
+    // @PostMapping("")
+    // public ResponseEntity<DiscoveryLocation> addLocation(@PathVariable Long discoveryId, @RequestBody DiscoveryLocation location) {
         
-        DiscoveryLocation savedLocation = mapService.addLocation(discoveryId, location);
+    //     DiscoveryLocation savedLocation = mapService.addLocation(discoveryId, location);
 
-        return ResponseEntity.ok(savedLocation);
-    }
+    //     return ResponseEntity.ok(savedLocation);
+    // }
 }
 

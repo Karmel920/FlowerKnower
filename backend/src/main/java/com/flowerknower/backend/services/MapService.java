@@ -16,12 +16,12 @@ public class MapService {
     private final DiscoveryRepository discoveryRepository;
     private final DiscoveryService discoveryService;
 
-    public DiscoveryLocation addLocation(Long discoveryId, DiscoveryLocation location) {
-        DiscoveryLocation savedLocation = locationRepository.save(location);
-        Discovery discovery = discoveryService.getDiscovery(discoveryId);
-        discovery.setLocation(savedLocation);
-        discoveryRepository.save(discovery);
-        return savedLocation;
-    }
+    // public DiscoveryLocation addLocation(Long discoveryId, DiscoveryLocation location) {
+    //     DiscoveryLocation savedLocation = locationRepository.save(location);
+    //     // Discovery discovery = discoveryService.getDiscovery(discoveryId);
+    //     discovery.setLocation(savedLocation);
+    //     discoveryRepository.save(discovery);
+    //     return savedLocation;
+    // }
     
 }

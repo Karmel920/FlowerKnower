@@ -1,6 +1,8 @@
 package com.flowerknower.backend.model.entities;
 
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +35,7 @@ public class Discovery {
     @OneToOne
     @JoinColumn(name = "loc_id")
     private DiscoveryLocation location;
+
+    private LocalDate date;
 
 }

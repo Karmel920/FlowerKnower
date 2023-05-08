@@ -1,5 +1,7 @@
 package com.flowerknower.backend.controllers;
 
+import com.flowerknower.backend.model.dtos.DiscoveryRequestDTO;
+import com.flowerknower.backend.model.dtos.DiscoveryResponseDTO;
 import com.flowerknower.backend.model.entities.Discovery;
 import com.flowerknower.backend.model.entities.User;
 import com.flowerknower.backend.services.DiscoveryService;
@@ -23,16 +25,16 @@ public class DiscoveryController {
     private final DiscoveryService discoveryService;
 
     @ResponseStatus(value = HttpStatus.OK)
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Discovery> submitDiscovery (@AuthenticationPrincipal User user,
-        @RequestParam("image") MultipartFile file,
-        @RequestParam("prediction") String prediction) throws IOException {
-        Discovery discovery = discoveryService.submitDiscovery(file, user, prediction);
-        return ResponseEntity.ok(discovery);
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void submitDiscovery(
+            @AuthenticationPrincipal User user,
+            @RequestParam("image") MultipartFile file,
+            @ModelAttribute DiscoveryRequestDTO discovery) throws IOException {
+        discoveryService.submitDiscovery(file, user, discovery);
     }
 
     @GetMapping("{discoveryId}")
-    public ResponseEntity<Discovery> getDiscovery(@PathVariable Long discoveryId) {
+    public ResponseEntity<DiscoveryResponseDTO> getDiscovery(@PathVariable Long discoveryId) throws IOException {
         return ResponseEntity.ok(discoveryService.getDiscovery(discoveryId));
     }
 
