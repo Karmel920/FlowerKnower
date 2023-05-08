@@ -30,7 +30,7 @@ function DropFileInput(){
     }
     React.useEffect(()=>{
         if(modelPrediction !== '' && modelPrediction != null){
-            navigate('/identify',{state: {img: image, prediction: modelPrediction, description: modelDescription}});
+            navigate('/identify',{state: {img: image, imgObject: imageObject, prediction: modelPrediction, description: modelDescription}});
         }
     },[modelPrediction]);
 

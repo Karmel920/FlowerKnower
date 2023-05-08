@@ -30,7 +30,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
     color: #000000;
 }
 .descriptionText{
@@ -52,7 +52,7 @@
     justify-content: space-between;
 }
 .plantInfoDescription{
-    height:11ch;
+    height:18ch;
     overflow-y: scroll;
 }
 #nextButton, #saveButton{
