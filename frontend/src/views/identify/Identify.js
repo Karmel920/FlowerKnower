@@ -13,6 +13,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
@@ -20,9 +21,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function Identify(){
     const navigate = useNavigate();
     const location = useLocation();
-    const {img, prediction, description} = location.state;
-
+    const {img, imgObject, prediction, description} = location.state;
     const [showMapPopup, setShowMapPopup] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+
     const handleAddLocalizationClick = () => {
         setShowMapPopup(true);
     }
@@ -59,8 +61,11 @@ function Identify(){
         setDraggable((d) => !d);
     },[]);
     React.useEffect(()=>{
-        console.log(position);
-        setPosition(position);
+        if(localStorage.getItem('token') !== "" && localStorage.getItem('token') != null){
+            setPosition(position);
+        }else{
+            navigate('/login');
+        }
     },[position],[showMapPopup]);
 
     const [open,setOpen] = React.useState(false);
@@ -74,9 +79,38 @@ function Identify(){
         setOpen(false);
     }
     const handleLogout = () => {
+        axios.get('http://localhost:8080/api/v1/auth/logout', {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        });
         localStorage.setItem('token',"");
+        localStorage.setItem('flowersCount',"");
         navigate("/login");
     }
+
+    const submitDiscovery = () => {
+        setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append("image", imgObject);
+        formData.append("name", prediction);
+        formData.append("description", description);
+        formData.append("discoveryLocation.latitude", position.lat);
+        formData.append("discoveryLocation.longitude", position.lng);
+        axios.post('http://localhost:8080/api/v1/discovery', formData, {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token'),
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then(response=>{
+            console.log(response.data);
+            setIsSubmitting(false);
+        }).catch(error=>{
+            console.log(error);
+            setIsSubmitting(false);
+        });
+    }
+
     return(
         <div className={styles.container}>
             <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
@@ -138,7 +172,7 @@ function Identify(){
                             <Link className={styles.link} to="/main">
                                 <button id={styles.nextButton} type="button">OK</button>
                             </Link>
-                            <button id={styles.saveButton} type="button">Save</button>
+                            <button id={styles.saveButton} type="button" onClick={submitDiscovery}>Save</button>
                         </div>
                     </div>
                 </div>
