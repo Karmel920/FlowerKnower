@@ -3,6 +3,7 @@ package com.flowerknower.backend.services;
 import com.flowerknower.backend.model.dtos.DiscoveryLocationDTO;
 import com.flowerknower.backend.model.dtos.DiscoveryRequestDTO;
 import com.flowerknower.backend.model.dtos.DiscoveryResponseDTO;
+import com.flowerknower.backend.model.dtos.UniqueDiscoveriesAmountDTO;
 import com.flowerknower.backend.model.entities.Discovery;
 import com.flowerknower.backend.model.entities.DiscoveryLocation;
 import com.flowerknower.backend.model.entities.Flower;
@@ -21,7 +22,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -86,23 +86,26 @@ public class DiscoveryService {
         for (Discovery discovery : discoveries) {
             byte[] image = imageService.downloadImage(discovery.getImage().getName(), discovery.getImage().getId());
             discoveryDTOList.add(DiscoveryResponseDTO
-            .builder()
-            .date(discovery.getDate())
-            .id(discovery.getId())
-            .name(discovery.getFlower().getName())
-            .description(discovery.getFlower().getDescription())
-            .image(image)
-            .discoveryLocation(DiscoveryLocationDTO
                     .builder()
-                    .latitude(discovery.getLocation().getLatitude())
-                    .longitude(discovery.getLocation().getLongitude())
-                    .build())
-            .build());
+                    .date(discovery.getDate())
+                    .id(discovery.getId())
+                    .name(discovery.getFlower().getName())
+                    .description(discovery.getFlower().getDescription())
+                    .image(image)
+                    .discoveryLocation(DiscoveryLocationDTO
+                            .builder()
+                            .latitude(discovery.getLocation().getLatitude())
+                            .longitude(discovery.getLocation().getLongitude())
+                            .build())
+                    .build());
         }
         return discoveryDTOList;
     }
 
-    public Long getUniqueDiscoveriesByUser(User user) {
-        return discoveryRepository.countDistinctFlowersByUser(user);
+    public UniqueDiscoveriesAmountDTO getUniqueDiscoveriesByUser(User user) {
+        return UniqueDiscoveriesAmountDTO
+                .builder()
+                .uniqueFlowersCount(discoveryRepository.countDistinctFlowersByUser(user))
+                .build();
     }
 }

@@ -2,6 +2,7 @@ package com.flowerknower.backend.controllers;
 
 import com.flowerknower.backend.model.dtos.DiscoveryRequestDTO;
 import com.flowerknower.backend.model.dtos.DiscoveryResponseDTO;
+import com.flowerknower.backend.model.dtos.UniqueDiscoveriesAmountDTO;
 import com.flowerknower.backend.model.entities.Discovery;
 import com.flowerknower.backend.model.entities.User;
 import com.flowerknower.backend.services.DiscoveryService;
@@ -38,12 +39,13 @@ public class DiscoveryController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<DiscoveryResponseDTO>> getAllDiscoveries(@AuthenticationPrincipal User user) throws IOException {
+    public ResponseEntity<List<DiscoveryResponseDTO>> getAllDiscoveries(@AuthenticationPrincipal User user)
+            throws IOException {
         return ResponseEntity.ok(discoveryService.getAllDiscoveriesByUser(user));
     }
 
     @GetMapping("/unique")
-    public ResponseEntity<Long> getNumberOfUniqueDiscoveries(@AuthenticationPrincipal User user) {
+    public ResponseEntity<UniqueDiscoveriesAmountDTO> getNumberOfUniqueDiscoveries(@AuthenticationPrincipal User user) {
         return ResponseEntity.ok(discoveryService.getUniqueDiscoveriesByUser(user));
     }
 }

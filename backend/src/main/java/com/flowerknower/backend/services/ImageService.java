@@ -37,7 +37,7 @@ public class ImageService {
         Map<String, String> metadata = new HashMap<>();
         metadata.put("Content-Type", file.getContentType());
         metadata.put("Content-Length", String.valueOf(file.getSize()));
-//        String fullPath=PATH+file.getOriginalFilename();
+        // String fullPath=PATH+file.getOriginalFilename();
         String path = String.format("%s/%s", BucketName.FLOWERKNOWER_IMAGE.getBucketName(), UUID.randomUUID());
         String fileName = String.format("%s", file.getOriginalFilename());
         try {
@@ -46,18 +46,18 @@ public class ImageService {
             throw new IllegalStateException("Failed to upload file", e);
         }
         Image image = Image.builder()
-                            .name(file.getOriginalFilename())
-                            .type(file.getContentType())
-                            .imagePath(path)
-                            .build();
-//        file.transferTo(new File(fullPath));
+                .name(file.getOriginalFilename())
+                .type(file.getContentType())
+                .imagePath(path)
+                .build();
+        // file.transferTo(new File(fullPath));
         return imageRepository.save(image);
     }
 
     public byte[] downloadImage(String fileName, Long id) throws IOException {
         Optional<Image> image = imageRepository.findByNameAndId(fileName, id);
-//        String fullPath = image.get().getImagePath();
-//        return Files.readAllBytes(new File(fullPath).toPath());
+        // String fullPath = image.get().getImagePath();
+        // return Files.readAllBytes(new File(fullPath).toPath());
         return fileStore.download(image.get().getImagePath(), image.get().getName());
     }
 }

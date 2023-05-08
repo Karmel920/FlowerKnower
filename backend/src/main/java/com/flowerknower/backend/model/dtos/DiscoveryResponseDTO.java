@@ -1,6 +1,5 @@
 package com.flowerknower.backend.model.dtos;
 
-
 import java.time.LocalDate;
 
 import com.flowerknower.backend.model.entities.DiscoveryLocation;
@@ -9,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Builder

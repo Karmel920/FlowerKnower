@@ -7,5 +7,6 @@ import lombok.Getter;
 @Getter
 public enum BucketName {
     FLOWERKNOWER_IMAGE("flowerknower");
+
     private final String bucketName;
 }

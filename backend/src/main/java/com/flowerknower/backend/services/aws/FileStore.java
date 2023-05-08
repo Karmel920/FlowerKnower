@@ -21,9 +21,9 @@ public class FileStore {
     private final AmazonS3 amazonS3;
 
     public void upload(String path,
-                       String fileName,
-                       Optional<Map<String, String>> optionalMetaData,
-                       InputStream inputStream) {
+            String fileName,
+            Optional<Map<String, String>> optionalMetaData,
+            InputStream inputStream) {
         ObjectMetadata objectMetadata = new ObjectMetadata();
         optionalMetaData.ifPresent(map -> {
             if (!map.isEmpty()) {

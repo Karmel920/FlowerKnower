@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiscoveryRequestDTO {
-    private String name;
-    private String description;
-    private DiscoveryLocationDTO discoveryLocation;
+public class UniqueDiscoveriesAmountDTO {
+    private Long uniqueFlowersCount;
 }

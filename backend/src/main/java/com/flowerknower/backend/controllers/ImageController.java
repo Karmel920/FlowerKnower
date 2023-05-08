@@ -19,16 +19,17 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/image")
 @RequiredArgsConstructor
 public class ImageController {
-    private final ImageService imageService;
+	private final ImageService imageService;
 
-    @ResponseStatus(value = HttpStatus.OK)
-	@PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
-	public void uploadImage(@RequestParam("image")MultipartFile file) throws IOException{
+	@ResponseStatus(value = HttpStatus.OK)
+	@PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
+	public void uploadImage(@RequestParam("image") MultipartFile file) throws IOException {
 		imageService.uploadImage(file);
 	}
-	
+
 	@GetMapping("/download")
-	public ResponseEntity<byte[]> downloadImage(@RequestParam String fileName, @RequestParam Long id) throws IOException {
+	public ResponseEntity<byte[]> downloadImage(@RequestParam String fileName, @RequestParam Long id)
+			throws IOException {
 		byte[] image = imageService.downloadImage(fileName, id);
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
 	}
