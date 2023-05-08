@@ -24,6 +24,7 @@ function Identify(){
     const {img, imgObject, prediction, description} = location.state;
     const [showMapPopup, setShowMapPopup] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [openSuccessSnackbar, setOpenSuccessSnackbar] = React.useState(false);
 
     const handleAddLocalizationClick = () => {
         setShowMapPopup(true);
@@ -77,6 +78,7 @@ function Identify(){
             return;
         }
         setOpen(false);
+        setOpenSuccessSnackbar(false);
     }
     const handleLogout = () => {
         axios.get('http://localhost:8080/api/v1/auth/logout', {
@@ -105,6 +107,7 @@ function Identify(){
         }).then(response=>{
             console.log(response.data);
             setIsSubmitting(false);
+            setOpenSuccessSnackbar(true);
         }).catch(error=>{
             console.log(error);
             setIsSubmitting(false);
@@ -116,6 +119,11 @@ function Identify(){
             <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{width:"100%"}}>
                     Discovery location has been saved!
+                </Alert>
+            </Snackbar>
+            <Snackbar open={openSuccessSnackbar} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{width:"100%"}}>
+                    Discovery has been saved!
                 </Alert>
             </Snackbar>
             <header style={{verticalAlign:"top"}}><Header title={"Identify plant"} logoutAction={handleLogout}/></header>
@@ -166,6 +174,7 @@ function Identify(){
                         </div>
                         <div className={styles.plantInfoDescription}>
                             <p className={styles.descriptionText}>{description}</p>
+                            <a href="https://www.wikipedia.org/"><p className={styles.descriptionText}>Source: Wikipedia</p></a>
                         </div>
                         <div className={styles.buttonsDiv}>
                             {/* zamiast link to navigate w hook'u */}                            
