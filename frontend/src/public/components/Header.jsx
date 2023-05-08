@@ -10,7 +10,16 @@ import {Link} from 'react-router-dom';
 function Header({logoutAction, title}){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [flowersNum, setFlowersNum] = React.useState(0);
     const open = Boolean(anchorEl);
+
+    React.useEffect(()=>{
+        if(localStorage.getItem('flowersCount')===null || localStorage.getItem('flowersCount') === ""){
+            setFlowersNum(0);
+        }else{
+            setFlowersNum(localStorage.getItem('flowersCount'));
+        }
+    },[localStorage.getItem('flowersCount')])
 
     const handleClick = (event) =>{
         setAnchorEl(event.currentTarget);
@@ -38,7 +47,7 @@ function Header({logoutAction, title}){
             </div>
             <div className= {styles.rightControl}>
                 <div className={styles.flowerNumContainer}>
-                    <p className={styles.text}>{localStorage.getItem('flowersCount')}</p>
+                    <p className={styles.text}>{flowersNum}</p>
                     <Tooltip title="Number of unique plants you've already discovered">
                         <LocalFloristIcon sx={{ml:"1ch"}}/>
                     </Tooltip>
