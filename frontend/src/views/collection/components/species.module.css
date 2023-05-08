@@ -42,3 +42,19 @@
 .iconButton_rotated{
     transform: rotate(180deg);
 }
+.photoDiv{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+#plantImageDiv{
+    align-self: center;
+    border-radius:30px;
+    width: 360px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+
+}
