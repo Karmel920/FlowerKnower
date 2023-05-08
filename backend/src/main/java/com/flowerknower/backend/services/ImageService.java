@@ -23,8 +23,6 @@ import static org.apache.http.entity.ContentType.*;
 public class ImageService {
     private final ImageRepository imageRepository;
     private final FileStore fileStore;
-    @Value("${img.path}")
-    private String PATH;
 
     public Image uploadImage(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
@@ -56,8 +54,8 @@ public class ImageService {
         return imageRepository.save(image);
     }
 
-    public byte[] downloadImage(String fileName) throws IOException {
-        Optional<Image> image = imageRepository.findByName(fileName);
+    public byte[] downloadImage(String fileName, Long id) throws IOException {
+        Optional<Image> image = imageRepository.findByNameAndId(fileName, id);
 //        String fullPath = image.get().getImagePath();
 //        return Files.readAllBytes(new File(fullPath).toPath());
         return fileStore.download(image.get().getImagePath(), image.get().getName());

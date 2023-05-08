@@ -7,5 +7,5 @@ import com.flowerknower.backend.model.entities.Image;
 import java.util.Optional;
 
 public interface ImageRepository extends JpaRepository<Image, Long>{
-    Optional<Image> findByName(String fileName);
+    Optional<Image> findByNameAndId(String fileName, Long id);
 }

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -61,7 +62,7 @@ public class DiscoveryService {
         Optional<Discovery> discoveryOptional = discoveryRepository.findById(discoveryId);
         if (discoveryOptional.isPresent()) {
             Discovery discovery = discoveryOptional.get();
-            byte[] image = imageService.downloadImage(discovery.getImage().getName());
+            byte[] image = imageService.downloadImage(discovery.getImage().getName(), discovery.getImage().getId());
             return DiscoveryResponseDTO
                     .builder()
                     .date(discovery.getDate())
@@ -79,11 +80,29 @@ public class DiscoveryService {
         throw new RuntimeException("Discovery does not exist!");
     }
 
-    public List<Discovery> getAllDiscoveriesByUser(User user) {
-        return discoveryRepository.findAllByUser(user);
+    public List<DiscoveryResponseDTO> getAllDiscoveriesByUser(User user) throws IOException {
+        List<Discovery> discoveries = discoveryRepository.findAllByUser(user);
+        List<DiscoveryResponseDTO> discoveryDTOList = new ArrayList<>();
+        for (Discovery discovery : discoveries) {
+            byte[] image = imageService.downloadImage(discovery.getImage().getName(), discovery.getImage().getId());
+            discoveryDTOList.add(DiscoveryResponseDTO
+            .builder()
+            .date(discovery.getDate())
+            .id(discovery.getId())
+            .name(discovery.getFlower().getName())
+            .description(discovery.getFlower().getDescription())
+            .image(image)
+            .discoveryLocation(DiscoveryLocationDTO
+                    .builder()
+                    .latitude(discovery.getLocation().getLatitude())
+                    .longitude(discovery.getLocation().getLongitude())
+                    .build())
+            .build());
+        }
+        return discoveryDTOList;
     }
 
-    public Set<Discovery> getUniqueDiscoveriesByUser(User user) {
-        return discoveryRepository.findFirstDiscoveryForUniqueFlowersByUserSQL(user.getId());
+    public Long getUniqueDiscoveriesByUser(User user) {
+        return discoveryRepository.countDistinctFlowersByUser(user);
     }
 }

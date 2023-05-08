@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,12 +38,12 @@ public class DiscoveryController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Discovery>> getAllDiscoveries(@AuthenticationPrincipal User user) {
+    public ResponseEntity<List<DiscoveryResponseDTO>> getAllDiscoveries(@AuthenticationPrincipal User user) throws IOException {
         return ResponseEntity.ok(discoveryService.getAllDiscoveriesByUser(user));
     }
 
     @GetMapping("/unique")
-    public ResponseEntity<Set<Discovery>> getAllUniqueDiscoveries(@AuthenticationPrincipal User user) {
+    public ResponseEntity<Long> getNumberOfUniqueDiscoveries(@AuthenticationPrincipal User user) {
         return ResponseEntity.ok(discoveryService.getUniqueDiscoveriesByUser(user));
     }
 }

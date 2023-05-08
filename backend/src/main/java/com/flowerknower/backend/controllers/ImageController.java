@@ -27,9 +27,9 @@ public class ImageController {
 		imageService.uploadImage(file);
 	}
 	
-	@GetMapping("/download/{fileName}")
-	public ResponseEntity<byte[]> downloadImage(@PathVariable String fileName) throws IOException {
-		byte[] image = imageService.downloadImage(fileName);
+	@GetMapping("/download")
+	public ResponseEntity<byte[]> downloadImage(@RequestParam String fileName, @RequestParam Long id) throws IOException {
+		byte[] image = imageService.downloadImage(fileName, id);
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
 	}
 
