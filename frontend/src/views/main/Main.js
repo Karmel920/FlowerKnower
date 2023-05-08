@@ -4,7 +4,8 @@ import Header from '../../public/components/Header';
 import Navbar from '../../public/components/Navbar';
 import DropFileInput from './components/DropFileInput';
 import { useNavigate } from 'react-router';
-// Investigate plant
+import axios from 'axios';
+
 
 function Main(){
 
@@ -13,13 +14,29 @@ function Main(){
         if(localStorage.getItem('token') === "" || localStorage.getItem('token') == null){
             navigate('/login');
         }else{
-        
+            getUniqueFlowersCount();
         }
     },[]);
 
     const handleLogout = () => {
+        axios.get('http://localhost:8080/api/v1/auth/logout', {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        });
         localStorage.setItem('token',"");
+        localStorage.setItem('flowersCount',"");
         navigate("/login");
+    }
+    const getUniqueFlowersCount = () => {
+        axios.get('http://localhost:8080/api/v1/discovery/unique', {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(response=>{
+            localStorage.setItem('flowersCount',response.data.uniqueFlowersCount);
+        });
+
     }
     return(
         <div className={styles.container}>
