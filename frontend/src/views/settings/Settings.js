@@ -2,17 +2,33 @@ import React from "react";
 import styles from '../../public/modules/settings.module.css';
 import Header from "../../public/components/Header";
 import Confirmation from "../../public/components/Confirmation";
-// import { Divider } from "@mui/material";
-// import { Box } from "@mui/system";
+import axios from 'axios';
+import { useNavigate } from "react-router";
 function Settings(){
 
+    const navigate = useNavigate();
     const [openConfirmation, setOpenConfirmation] = React.useState(false);
 
     const handleOpenConfirmation = () => setOpenConfirmation(true);
 
+    React.useEffect(()=>{
+        if(localStorage.getItem('token') === "" || localStorage.getItem('token') == null){
+            navigate('/login');
+        }
+    },[]);
+    const handleLogout = () => {
+        axios.get('http://localhost:8080/api/v1/auth/logout', {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        });
+        localStorage.setItem('token',"");
+        localStorage.setItem('flowersCount',"");
+        navigate("/login");
+    }
     return(
             <div className={styles.container}>
-                <header><Header title={"Settings"}/></header>
+                <header><Header title={"Settings"} logoutAction={handleLogout}/></header>
                 <main className={styles.main}>
                     <Confirmation open={openConfirmation} onClose ={() => setOpenConfirmation(false)}/>
                     <div className={styles.forms}>

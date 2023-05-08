@@ -4,6 +4,7 @@ import Header from "../../public/components/Header";
 import { Button } from "@mui/material";
 import BasicPhoto from '../../public/img/basic_photo.svg'
 import { useNavigate } from "react-router";
+import axios from 'axios';
 function Account({photo}){
     const navigate = useNavigate();
     const [photo_url, setPhotoUrl] = React.useState(photo);
@@ -20,8 +21,19 @@ function Account({photo}){
     if(photo_url === ''){
         setPhotoUrl(BasicPhoto);
     }
+    React.useEffect(()=>{
+        if(localStorage.getItem('token') === "" || localStorage.getItem('token') == null){
+            navigate('/login');
+        }
+    },[])
     const handleLogout = () => {
+        axios.get('http://localhost:8080/api/v1/auth/logout', {
+            headers:{
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        });
         localStorage.setItem('token',"");
+        localStorage.setItem('flowersCount',"");
         navigate("/login");
     }
     return(
