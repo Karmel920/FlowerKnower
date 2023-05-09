@@ -1,6 +1,6 @@
 import os
 
-import tensorflow_hub as hub
+# import tensorflow_hub as hub
 import numpy as np
 
 from tensorflow.keras.models import load_model
@@ -19,9 +19,9 @@ flower_categories = ['knapweed', 'dahlia', 'viola_(plant)', 'echinacea', 'clover
 
 
 def load_model_pred():
-    path = os.path.join(MODELS_PATH, 'flowers_20_small_data.h5')
+    path = os.path.join(MODELS_PATH, 'flowers_11_small_data.h5')
     path = path.replace(os.sep, '/')
-    load = load_model(path, custom_objects={"KerasLayer": hub.KerasLayer})
+    load = load_model(path)
     return load
 
 
