@@ -1,8 +1,6 @@
 package com.flowerknower.backend.services.authentication;
 
-import com.flowerknower.backend.model.requests.AuthenticationRequest;
-import com.flowerknower.backend.model.requests.RegisterRequest;
-import com.flowerknower.backend.model.responses.AuthenticationResponse;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,9 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.flowerknower.backend.model.entities.Token;
 import com.flowerknower.backend.model.entities.User;
+import com.flowerknower.backend.model.entities.UserData;
 import com.flowerknower.backend.model.enums.Role;
 import com.flowerknower.backend.model.enums.TokenType;
+import com.flowerknower.backend.model.requests.AuthenticationRequest;
+import com.flowerknower.backend.model.requests.RegisterRequest;
+import com.flowerknower.backend.model.responses.AuthenticationResponse;
 import com.flowerknower.backend.repositories.TokenRepository;
+import com.flowerknower.backend.repositories.UserDataRepository;
 import com.flowerknower.backend.repositories.UserRepository;
 import com.flowerknower.backend.services.jwt.JWTService;
 
@@ -26,6 +29,7 @@ public class AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JWTService jwtService;
   private final AuthenticationManager authenticationManager;
+  private final UserDataRepository userDataRepository;
 
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
@@ -35,6 +39,8 @@ public class AuthenticationService {
         .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
+    UserData userData = UserData.builder().user(savedUser).build();
+    userDataRepository.save(userData);
     saveUserToken(savedUser, jwtToken);
     return AuthenticationResponse.builder()
         .token(jwtToken)

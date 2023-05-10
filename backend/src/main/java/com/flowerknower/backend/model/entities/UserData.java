@@ -11,13 +11,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Flower {
+public class UserData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    @Column(length = 1000)
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    
+    @ManyToOne
+    @JoinColumn(name = "image_id")
+    private Image profileImage;
 }
