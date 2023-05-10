@@ -1,5 +1,5 @@
 .navbar{
-    width: 305px;
+    width: 230px;
     height: 100vh;
 }
 .categoryText{
@@ -11,4 +11,26 @@
 }
 .link{
     width:100%;
+}
+
+@media only screen  and (max-device-width: 800px){
+    
+    .navbar{
+        z-index: 1;
+        position: fixed;
+        left:0;
+        top:0;
+        transform: translateX(-230px);
+        transition: transform 0.2s;
+        height:100%;
+    }
+    .navbarOpen{
+        z-index: 1;
+        position: fixed;
+        left:0;
+        top:0;
+        transform: translateX(0px);
+        transition: transform 0.2s;
+        height:100%;
+    }
 }

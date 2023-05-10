@@ -25,6 +25,7 @@ function Identify(){
     const [showMapPopup, setShowMapPopup] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [openSuccessSnackbar, setOpenSuccessSnackbar] = React.useState(false);
+    const [isOpenNavbar, setIsOpenNavabar] = React.useState(false);
 
     const handleAddLocalizationClick = () => {
         setShowMapPopup(true);
@@ -126,9 +127,9 @@ function Identify(){
                     Discovery has been saved!
                 </Alert>
             </Snackbar>
-            <header style={{verticalAlign:"top"}}><Header title={"Identify plant"} logoutAction={handleLogout}/></header>
+            <header style={{verticalAlign:"top"}}><Header title={"Identify plant"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavabar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
-                <Navbar/>
+                <Navbar isOpenNavbar={isOpenNavbar}/>
                 <div className={styles.section}>
                     <div id={styles.plantImage} style={{backgroundImage:`url(${img})`}}/>
                     <div className={styles.plantInfoContainer}>

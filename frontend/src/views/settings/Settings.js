@@ -28,7 +28,7 @@ function Settings(){
     }
     return(
             <div className={styles.container}>
-                <header><Header title={"Settings"} logoutAction={handleLogout}/></header>
+                <header><Header title={"Settings"} logoutAction={handleLogout} showMenu={false}/></header>
                 <main className={styles.main}>
                     <Confirmation open={openConfirmation} onClose ={() => setOpenConfirmation(false)}/>
                     <div className={styles.forms}>

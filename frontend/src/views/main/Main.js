@@ -9,7 +9,8 @@ import axios from 'axios';
 
 function Main(){
 
-    const navigate = useNavigate;
+    const navigate = useNavigate();
+    const [isOpenNavbar, setIsOpenNavbar] = React.useState(false);
     React.useEffect(()=>{
         if(localStorage.getItem('token') === "" || localStorage.getItem('token') == null){
             navigate('/login');
@@ -40,9 +41,9 @@ function Main(){
     }
     return(
         <div className={styles.container}>
-            <header style={{verticalAlign:"top"}}><Header logoutAction={handleLogout} title={"Identify plants"}/></header>
+            <header style={{verticalAlign:"top"}}><Header logoutAction={handleLogout} title={"Identify plants"} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
-                <Navbar/>
+                <Navbar isOpenNavbar={isOpenNavbar}/>
                 <main>
                     <DropFileInput/>
                 </main> 

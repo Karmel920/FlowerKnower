@@ -47,7 +47,7 @@
 #saveButton{
     width:50%;
     height: 2em;
-    background: #FAF7FF;
+    /* background: #FAF7FF; */
     border: 2px solid #1BF808;
     border-radius: 30px;
     margin-bottom:1em;
@@ -65,7 +65,7 @@
 #deleteAccountBtn{
     width:20%;
     height:2em;
-    background: #FAF7FF;
+    /* background: #FAF7FF; */
     border: 2px solid #F80808;
     border-radius: 30px;
     font-family: 'Roboto';

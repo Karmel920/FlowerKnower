@@ -21,6 +21,7 @@ function Collection(){
     const [discoveries, setDiscoveries] = React.useState([]);
     const [spinner, setSpinner] = React.useState(false);
     const [openErrorSnackbar, setOpenErrorSnackbar] = React.useState(false);
+    const [isOpenNavbar, setIsOpenNavbar] = React.useState(false);
 
     useEffect(()=>{
         if(localStorage.getItem('token') !== "" && localStorage.getItem('token') != null){
@@ -64,9 +65,9 @@ function Collection(){
     
     return(
         <div className={styles.container}>
-            <header style={{verticalAlign:"top"}}><Header title={"Your plants"} logoutAction={handleLogout}/></header>
+            <header style={{verticalAlign:"top"}}><Header title={"Your plants"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
-                <Navbar/>
+                <Navbar isOpenNavbar={isOpenNavbar}/>
                 <div className={styles.section}>
                     <Snackbar anchorOrigin={{vertical: 'bottom', horizontal:'left'}} open={openErrorSnackbar} autoHideDuration={3000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>

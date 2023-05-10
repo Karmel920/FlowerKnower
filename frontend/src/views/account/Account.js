@@ -38,9 +38,9 @@ function Account({photo}){
     }
     return(
         <div className={styles.container}> 
-            <header><Header title={"Profile"} logoutAction={handleLogout}/></header>
+            <header><Header title={"Profile"} logoutAction={handleLogout} showMenu={false}/></header>
             <main className={styles.main}>
-                <form className={styles.accountForm} action="" encType='multipart/form-data'>
+                <form className={styles.accountForm}>
                     <div className={styles.profilePicture}>
                         <div id={styles.picture} style={{backgroundImage:`url(${photo_url})`}}></div>
                         <Button variant="contained" component="label">

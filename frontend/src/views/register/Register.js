@@ -98,6 +98,8 @@ function Register(){
                         <input id={styles.repeatPasswordInput} placeholder="Repeat password" type="password" onChange={handleRepeatPasswordChange}/>
                         {spinner && (<Box sx={{mt:"2ch", display:"flex", justifyContent:"center"}}><CircularProgress/></Box>)}
                         <button id={styles.registerButton} type="submit" disabled={isSubmitting}>Sign up</button>
+                        <Link className={styles.link} to="/login"><button id={styles.loginButtonMobile} type="button">Sign in</button></Link>
+                        <Link className={styles.link} to="/info"><button id={styles.infoButtonMobile} type="button">Want to learn more about app? Click here!</button></Link>
                     </form>
                 </div>
                 <div className={styles.registerPanel}>

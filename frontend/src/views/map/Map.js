@@ -81,7 +81,7 @@ function Map(){
 
     return(    
         <div className={styles.container}>
-            <header className={styles.mapHeader}><Header title={"Map of discoveries"} logoutAction={handleLogout} style={{position:"fixed",top:0}}/> </header>
+            <header className={styles.mapHeader}><Header title={"Map of discoveries"} logoutAction={handleLogout} showMenu={false} style={{position:"fixed",top:0}}/></header>
             <main className={styles.mainMapPanel}>
                 <div className={styles.mapContainer}>
                     <MapContainer
@@ -93,7 +93,7 @@ function Map(){
                         {discoveries.map((discovery, index) => (
                             <Marker key ={index} icon={markerIconConst} position={[discovery.discoveryLocation.latitude,discovery.discoveryLocation.longitude]}>
                             <Popup>
-                                <Box sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                                <Box className={styles.popupBox} sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                                     <p className={styles.text}>{discovery.name.charAt(0).toUpperCase()+discovery.name.slice(1)}</p>
                                     <p className={styles.text}>{discovery.date}</p>
                                     <div id={styles.plantImageMap} style={{backgroundImage:`url(${imageUrls[index]})`}}/>

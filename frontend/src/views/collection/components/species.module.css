@@ -58,3 +58,39 @@
     display: inline-block;
 
 }
+@media only screen and (max-device-width: 900px){
+    #plantImageDiv{
+        width: 320px;
+        height: 320px;
+    }
+}
+@media only screen and (max-device-width: 800px){
+
+    .species{
+        width: 80%;
+    }    
+
+}
+@media only screen and (max-device-width: 400px){
+
+    #plantImageDiv{
+        width: 250px;
+        height: 250px;
+    }
+    .speciesText{
+        font-size: 15px;
+    }
+    .speciesBodyText{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-device-width: 300px){
+
+    #plantImageDiv{
+        width: 200px;
+        height: 200px;
+    }
+    .speciesBodyText{
+        font-size: 11px;
+    }
+}

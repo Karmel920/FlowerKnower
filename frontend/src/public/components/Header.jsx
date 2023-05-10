@@ -7,7 +7,9 @@ import { Logout, Settings } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import {Link} from 'react-router-dom';
-function Header({logoutAction, title}){
+import MenuIcon from '@mui/icons-material/Menu';
+
+function Header({logoutAction, title, openNavbar, showMenu}){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [flowersNum, setFlowersNum] = React.useState(0);
@@ -34,9 +36,17 @@ function Header({logoutAction, title}){
     return(
         <div className={styles.topBar}>
             <div className={styles.leftControl}>
+                <div className={showMenu ? styles.openNav : styles.openNavHidden}>
+                    <IconButton
+                     size='medium'
+                     onClick={openNavbar}
+                     >
+                        <MenuIcon/>
+                     </IconButton>
+                </div>
                 <Link to="/main">
                     <Tooltip title="Get back to main panel">
-                        <IconButton size='large' sx={{ml:1, width:"5ch", borderRadius:"30px"}}>
+                        <IconButton size='medium' sx={{ml:1, width:"5ch", borderRadius:"30px"}}>
                             <HomeIcon/>
                         </IconButton>
                     </Tooltip>
