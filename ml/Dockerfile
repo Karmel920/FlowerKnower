@@ -5,14 +5,14 @@ RUN mkdir -p  /ml
 WORKDIR /ml
 
 # Copy application requirements file to the created working directory
-COPY requirements.txt .
+COPY ./requirements.txt .
 
 # Install application dependencies from the requirements file
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-RUN pip install --upgrade tensorflow-hub
-RUN pip install pillow
 
-COPY . .
+COPY ./models ./models
+COPY ./app ./app
 
-# Run the python application
+ENV PYTHONPATH "${PYTHONPATH}:/ml/app"
+
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]

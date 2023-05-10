@@ -1,7 +1,7 @@
 import numpy as np
 import urllib
-from PIL import Image as PILImage
 
+from PIL import Image as PILImage
 from tensorflow.keras.utils import load_img
 from tensorflow.keras.utils import img_to_array
 from io import BytesIO

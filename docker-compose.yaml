@@ -68,7 +68,7 @@ services:
       - "5000:5000"
     restart: unless-stopped
     networks:
-      - backend
+      - frontend
 
 # Volumes
 volumes:

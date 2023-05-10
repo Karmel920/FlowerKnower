@@ -1,13 +1,11 @@
-# import uvicorn
-
 from fastapi import FastAPI, status, UploadFile
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from urllib.error import URLError
 
-from app.image_preprocessing import preprocess_image_url, preprocess_image_img
-from app.neural_network import make_prediction
+from image_preprocessing import preprocess_image_url, preprocess_image_img
+from neural_network import make_prediction
 
 app = FastAPI(
     title="Flower Classification",
@@ -109,10 +107,3 @@ async def predict(image: Image):
         return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, content={"message": "Incorrect url"})
 
     return make_prediction(image)
-
-
-# if __name__ == '__main__':
-#     uvicorn.run(app,
-#                 host='127.0.0.1',
-#                 port=5000
-#                 )
