@@ -8,6 +8,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {Box} from "@mui/system";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Button from '@mui/material/Button';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -89,7 +91,6 @@ function DropFileInput(){
             setOpenErrorSnackbar(true);
         })
     }
-
     return(
         <form id={styles.formFileUpload} onDragEnter={handleDrag} onSubmit={handleSubmit}>
             <Snackbar anchorOrigin={{vertical: 'bottom', horizontal:'left'}} open={openErrorSnackbar} autoHideDuration={3000} onClose={handleClose}>
@@ -99,9 +100,14 @@ function DropFileInput(){
             </Snackbar>
             <input ref={inputRef} name="plant_image" type="file" id="input-file-upload" encType='multipart/form-data' style={{display:"none"}} onChange={handleChange} accept="image/jpeg, image/jpg, image/png" multiple={false} disabled={!!image}/>
             <label id={dragActive ? styles.labelFileUpload_active : styles.labelFileUpload} htmlFor="input-file-upload">
-                <div>
+                <div className={styles.inputsView}>
                     <p className={styles.text}>Drag and drop image here or</p>
                     <button id={styles.browseButton} onClick={onButtonClick} type="button">Browse files</button>
+                </div>
+                <div className={styles.inputsViewMobile}>
+                    <Button variant="contained" component="label" onClick={onButtonClick} startIcon={<PhotoCamera/>}>
+                        Upload or take photo
+                    </Button>
                 </div>
             </label>
             { dragActive && <div id={styles.dragFileElement} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></div> }
