@@ -10,11 +10,11 @@
     margin-top: 3ch;
     align-items: center;
     justify-content: flex-start;
+    overflow:auto;
 }
 .forms{
-    width: 100%;
+    width: 70%;
     display:grid;
-    grid-template-columns: 1fr 1fr;
 }
 .changePasswordForm, .changeEmailForm{
     display:flex;
@@ -25,6 +25,7 @@
     border: 1px solid black;
     width:60%;
     justify-self: center;
+    margin-bottom: 1ch;
 }
 .formText{
     font-family: 'Roboto';
@@ -70,7 +71,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 28px;
-    margin-top:5ch;
+    margin-top:1ch;
     color: #F11717;
 }
 #deleteAccountBtn:hover{
@@ -96,7 +97,22 @@
     color: green;
     text-align: center;
 }
-
+.formHeader{
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 1em;
+}
+.iconButton{
+    transition: transform 0.3s ease-out;
+}
+.iconButton_rotated{
+    transform: rotate(180deg);
+}
+.formBody{
+    align-items: center;
+    width:100%;
+}
 @media only screen and (max-device-width: 800px) {
     
     .formText{
@@ -118,6 +134,7 @@
         display: flex;
         flex-direction:column;
         align-items: center;
+        width:80%;
     }
     .changePasswordForm{
         margin-bottom: 1.5ch;
@@ -126,5 +143,30 @@
     .main{
         overflow: scroll;
     }
+    #deleteAccountBtn{
+        width: 30%;
+    }
+}
+@media only screen and (max-device-width: 400px){
 
+    .forms{
+        width:95%;
+    }
+
+    #deleteAccountBtn{
+        width: 40%;
+    }
+}
+@media only screen and (max-device-width: 300px){
+
+    .forms{
+        width:100%;
+    }
+
+    #deleteAccountBtn{
+        width: 50%;
+    }
+    .formText{
+        font-size: 13px;
+    }
 }
