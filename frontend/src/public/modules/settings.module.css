@@ -23,7 +23,6 @@
     justify-content: center;
     background: white;
     border: 1px solid black;
-    border-radius: 30px;
     width:60%;
     justify-self: center;
 }
@@ -47,7 +46,6 @@
 #saveButton{
     width:50%;
     height: 2em;
-    /* background: #FAF7FF; */
     border: 2px solid #1BF808;
     border-radius: 30px;
     margin-bottom:1em;
@@ -65,7 +63,6 @@
 #deleteAccountBtn{
     width:20%;
     height:2em;
-    /* background: #FAF7FF; */
     border: 2px solid #F80808;
     border-radius: 30px;
     font-family: 'Roboto';
@@ -80,4 +77,54 @@
     background: #e03d3d;
     color:white;
  
+}
+.errorText{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width:100%;
+    color: red;
+    text-align: center;
+}
+.successText{
+    font-family: 'Roboto';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    color: green;
+    text-align: center;
+}
+
+@media only screen and (max-device-width: 800px) {
+    
+    .formText{
+        font-size: 16px;
+    }
+    #changePasswordInput, #changeEmailInput{
+        font-size: 16px;
+    }
+    #saveButton{
+        font-size: 16px;
+    }
+    #deleteAccountBtn{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-device-width: 600px){
+
+    .forms{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+    }
+    .changePasswordForm{
+        margin-bottom: 1.5ch;
+    }
+
+    .main{
+        overflow: scroll;
+    }
+
 }
