@@ -7,12 +7,19 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router";
 import axios from 'axios';
+import MuiAlert from "@mui/material/Alert";
+import Snackbar from '@mui/material/Snackbar';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props}/>
+});
+
 function Map(){
     const navigate = useNavigate();
     const location = [50.06540687121868, 19.939021772031865];
     const [discoveries, setDiscoveries] = React.useState([]);
     const [imageUrls, setImageUrls] = React.useState([]);
-
+    const [errorSnackbar,setOpenErrorSnackbar] = React.useState(false);
     React.useEffect(()=>{
         if(localStorage.getItem('token') !== "" && localStorage.getItem('token') != null){
             getDiscoveries();
@@ -48,10 +55,12 @@ function Map(){
             }
         }).then(response=>{
             setDiscoveries(response.data);
-            loadImageUrls();
-            console.log(imageUrls);
+            loadImageUrls(response.data);
+            // setTimeout(()=>{
+            //     loadImageUrls();
+            // },2000)
         }).catch(error=>{
-            console.log(error);
+            setOpenErrorSnackbar(true);
         })
     }
 
@@ -74,13 +83,23 @@ function Map(){
         });
     }
 
-    const loadImageUrls = async () => {
+    const loadImageUrls = async (discoveries) => {
         const urls = await Promise.all(discoveries.map((discovery)=> getImage(discovery.image)));
         setImageUrls(urls);
     }
-
+    const handleClose = (event, reason) => {
+        if(reason === 'clickaway'){
+            return;
+        }
+       setOpenErrorSnackbar(false);
+    }
     return(    
         <div className={styles.container}>
+            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={errorSnackbar} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error" sx={{width:"100%"}}>
+                    Discoveries' location could not be displayed
+                </Alert>
+            </Snackbar>
             <header className={styles.mapHeader}><Header title={"Map of discoveries"} logoutAction={handleLogout} showMenu={false} style={{position:"fixed",top:0}}/></header>
             <main className={styles.mainMapPanel}>
                 <div className={styles.mapContainer}>
@@ -90,7 +109,10 @@ function Map(){
                         style={{width:'100%', height:"100%"}}
                     >
                         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                        {discoveries.map((discovery, index) => (
+                        {discoveries.map((discovery, index) => {
+                            if(imageUrls[index]){
+                                return(
+                            
                             <Marker key ={index} icon={markerIconConst} position={[discovery.discoveryLocation.latitude,discovery.discoveryLocation.longitude]}>
                             <Popup>
                                 <Box className={styles.popupBox} sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
@@ -100,7 +122,10 @@ function Map(){
                                 </Box>
                             </Popup>
                         </Marker>
-                        ))}
+                        );}else{
+                            return null;
+                        }
+                        })}
                         
                     </MapContainer>
                 </div>
