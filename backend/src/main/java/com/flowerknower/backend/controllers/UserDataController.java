@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import com.flowerknower.backend.model.entities.User;
 import com.flowerknower.backend.model.requests.EmailChangeRequest;
 import com.flowerknower.backend.model.requests.PasswordChangeRequest;
 import com.flowerknower.backend.services.UserDataService;
-import com.flowerknower.backend.services.authentication.LogoutService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 public class UserDataController {
 
     private final UserDataService userDataService;
-    private final LogoutService logoutService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE }, value = "/picture")

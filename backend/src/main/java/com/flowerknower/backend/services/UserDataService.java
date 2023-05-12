@@ -1,6 +1,7 @@
 package com.flowerknower.backend.services;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,12 @@ import com.flowerknower.backend.model.dtos.UniqueDiscoveriesAmountDTO;
 import com.flowerknower.backend.model.dtos.UserDataDTO;
 import com.flowerknower.backend.model.dtos.UserProfileImageDTO;
 import com.flowerknower.backend.model.entities.Image;
+import com.flowerknower.backend.model.entities.Token;
 import com.flowerknower.backend.model.entities.User;
 import com.flowerknower.backend.model.entities.UserData;
 import com.flowerknower.backend.model.requests.EmailChangeRequest;
 import com.flowerknower.backend.model.requests.PasswordChangeRequest;
+import com.flowerknower.backend.repositories.TokenRepository;
 import com.flowerknower.backend.repositories.UserDataRepository;
 import com.flowerknower.backend.repositories.UserRepository;
 
@@ -24,6 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class UserDataService {
     private final UserDataRepository userDataRepository;
     private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
     private final ImageService imageService;
     private final DiscoveryService discoveryService;
     private final PasswordEncoder passwordEncoder;
@@ -50,19 +54,24 @@ public class UserDataService {
         if (user.getEmail().equals(emailChangeRequest.getOldEmail())) {
             user.setEmail(emailChangeRequest.getNewEmail());
             userRepository.save(user);
+        } else {
+            throw new RuntimeException("Wrong email provided");
         }
-        throw new RuntimeException("Wrong email provided");
     }
 
     public void changeUserPassword(User user, PasswordChangeRequest passwordChangeRequest) {
-        if (user.getPassword().equals(passwordEncoder.encode(passwordChangeRequest.getOldPassword()))) {
+        if (passwordEncoder.matches(passwordChangeRequest.getOldPassword(), user.getPassword())) {
             user.setPassword(passwordEncoder.encode(passwordChangeRequest.getNewPassword()));
+
             userRepository.save(user);
+        } else {
+            throw new RuntimeException("Wrong password provided");
         }
-        throw new RuntimeException("Wrong password provided");
     }
 
     public void deleteUser(User user) {
+        List<Token> tokens = tokenRepository.findAllTokenByUser(user.getId());
+        tokenRepository.deleteAll(tokens);
         userRepository.delete(user);
     }
 
