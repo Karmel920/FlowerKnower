@@ -17,7 +17,7 @@ function Main(){
         }else{
             getUniqueFlowersCount();
         }
-    },[]);
+    },[navigate]);
 
     const handleLogout = () => {
         axios.get('http://localhost:8080/api/v1/auth/logout', {

@@ -106,11 +106,12 @@ function Identify(){
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response=>{
-            console.log(response.data);
             setIsSubmitting(false);
             setOpenSuccessSnackbar(true);
+            setTimeout(()=>{
+                navigate('/main')
+            },2000)
         }).catch(error=>{
-            console.log(error);
             setIsSubmitting(false);
         });
     }
@@ -177,8 +178,7 @@ function Identify(){
                             <p className={styles.descriptionText}>{description}</p>
                             <a href="https://www.wikipedia.org/"><p className={styles.descriptionText}>Source: Wikipedia</p></a>
                         </div>
-                        <div className={styles.buttonsDiv}>
-                            {/* zamiast link to navigate w hook'u */}                            
+                        <div className={styles.buttonsDiv}>                          
                             <Link className={styles.link} to="/main">
                                 <button id={styles.nextButton} type="button">OK</button>
                             </Link>
