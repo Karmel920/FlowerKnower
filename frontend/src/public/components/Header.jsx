@@ -8,6 +8,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import {Link} from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
 
 function Header({logoutAction, title, openNavbar, showMenu}){
 
@@ -68,7 +69,7 @@ function Header({logoutAction, title, openNavbar, showMenu}){
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{width:32, height:32}}>M</Avatar>
+                        <Avatar sx={{width:32, height:32}}><PersonIcon/></Avatar>
                     </IconButton>   
                 </Tooltip>
                 <Menu

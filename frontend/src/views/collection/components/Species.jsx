@@ -49,7 +49,6 @@ function Species({id, name, date, description, image, location}){
                     </Box>
                 </div>
                 <Box className={styles.speciesBody} sx={{display: visible ? "inline-block": "none"}}>
-                    {/* <p className = {styles.speciesBodyText}>{description === '' ? "No description": description}</p> */}
                     <div className={styles.photoDiv}>
                         <div id={styles.plantImageDiv} style={{backgroundImage:`url(${imageUrl})`}}/>
                     </div>
