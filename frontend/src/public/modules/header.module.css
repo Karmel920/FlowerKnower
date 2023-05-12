@@ -1,14 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap');
 .topBar{
-    /* background: linear-gradient(180deg, #39F192 0%, rgba(57, 241, 146, 0.5) 100%); */
     background: #39F192;
     width: 100%;
     display:flex;
     justify-content:space-between;
     position:relative;
-    /* position:fixed;
-    top:0;position:fixed;
-    top:0; */
     z-index:999;
     overflow-y: hidden;
 }

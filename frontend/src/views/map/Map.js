@@ -56,9 +56,6 @@ function Map(){
         }).then(response=>{
             setDiscoveries(response.data);
             loadImageUrls(response.data);
-            // setTimeout(()=>{
-            //     loadImageUrls();
-            // },2000)
         }).catch(error=>{
             setOpenErrorSnackbar(true);
         })
