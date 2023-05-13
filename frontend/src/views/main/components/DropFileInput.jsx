@@ -78,7 +78,7 @@ function DropFileInput(){
         e.preventDefault();
         const formData = new FormData();
         formData.append("image",imageObject);
-        axios.post('http://127.0.0.1:5000/predict/img', formData, {
+        axios.post('http://0.0.0.0:5000/predict/img', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
