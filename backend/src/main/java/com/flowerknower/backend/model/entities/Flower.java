@@ -18,6 +18,6 @@ public class Flower {
 
     private String name;
 
-    @Column(length = 1000)
+    @Column(length = 8000)
     private String description;
 }
