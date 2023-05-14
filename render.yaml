@@ -47,5 +47,5 @@ services:
 databases:
   - name: flowerknower-db
     databaseName: flowerknower # optional (Render may add a suffix)
-    user: postgres # optional
+    user: flowerknower_user # optional
     ipAllowList: [] # only allow internal connections
