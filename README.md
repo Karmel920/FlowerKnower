@@ -44,6 +44,8 @@ List the ready features here:
 ### Setup
 1. Copy .env.sample to .env
 2. Set values in .env file
+3. Contact Valerii Pukas to get your access keys
+4. Set keys in backend\src\main\resources\application.properties
 
 ### Run
 1. Start docker containers in app root directory
