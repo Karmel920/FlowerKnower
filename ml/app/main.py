@@ -21,9 +21,11 @@ app = FastAPI(
 
 origins = [
     "http://localhost:8080",  # backend
-    "http://localhost:80",  # frontend
+    "http://localhost:80", # frontend
+    "http://localhost:9090",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://127.0.0.1:9090",
     "http://127.0.0.1:8080",
     "http://127.0.0.1:80"
 ]
