@@ -1,5 +1,7 @@
 package com.flowerknower.backend.model.entities;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +13,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Image {
+public class DiscoveryLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private Double longitude;
 
-    private String type;
-
-    private String imagePath;
+    private Double latitude;
 }

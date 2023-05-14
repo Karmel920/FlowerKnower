@@ -11,14 +11,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Image {
+public class Flower {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String type;
-
-    private String imagePath;
+    @Column(length = 8000)
+    private String description;
 }

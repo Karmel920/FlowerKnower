@@ -1,5 +1,6 @@
 package com.flowerknower.backend.model.requests;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String email;
-    private String password;
+public class EmailChangeRequest {
+    private String oldEmail;
+    private String newEmail;
 }
