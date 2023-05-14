@@ -1,0 +1,172 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    overflow:hidden;
+}
+.main{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    margin-top: 3ch;
+    align-items: center;
+    justify-content: flex-start;
+    overflow:auto;
+}
+.forms{
+    width: 70%;
+    display:grid;
+}
+.changePasswordForm, .changeEmailForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid black;
+    width:60%;
+    justify-self: center;
+    margin-bottom: 1ch;
+}
+.formText{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+}
+#changePasswordInput, #changeEmailInput{
+    text-align: center;
+    width:70%;
+    height: 2em;
+    margin-bottom: 1em;
+    border: 1px solid black;
+    font-size: 20px;
+    background: white;
+}
+#saveButton{
+    width:50%;
+    height: 2em;
+    border: 2px solid #1BF808;
+    border-radius: 30px;
+    margin-bottom:1em;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #2CA800;
+}
+#saveButton:hover{
+    background: #55db52;
+    color: white;
+}
+#deleteAccountBtn{
+    width:20%;
+    height:2em;
+    border: 2px solid #F80808;
+    border-radius: 30px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    margin-top:1ch;
+    color: #F11717;
+}
+#deleteAccountBtn:hover{
+    background: #e03d3d;
+    color:white;
+ 
+}
+.errorText{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width:100%;
+    color: red;
+    text-align: center;
+}
+.successText{
+    font-family: 'Roboto';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    color: green;
+    text-align: center;
+}
+.formHeader{
+    display:flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 1em;
+}
+.iconButton{
+    transition: transform 0.3s ease-out;
+}
+.iconButton_rotated{
+    transform: rotate(180deg);
+}
+.formBody{
+    align-items: center;
+    width:100%;
+}
+@media only screen and (max-device-width: 800px) {
+    
+    .formText{
+        font-size: 16px;
+    }
+    #changePasswordInput, #changeEmailInput{
+        font-size: 16px;
+    }
+    #saveButton{
+        font-size: 16px;
+    }
+    #deleteAccountBtn{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-device-width: 600px){
+
+    .forms{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        width:80%;
+    }
+    .changePasswordForm{
+        margin-bottom: 1.5ch;
+    }
+
+    .main{
+        overflow: scroll;
+    }
+    #deleteAccountBtn{
+        width: 30%;
+    }
+}
+@media only screen and (max-device-width: 400px){
+
+    .forms{
+        width:95%;
+    }
+
+    #deleteAccountBtn{
+        width: 40%;
+    }
+}
+@media only screen and (max-device-width: 300px){
+
+    .forms{
+        width:100%;
+    }
+
+    #deleteAccountBtn{
+        width: 50%;
+    }
+    .formText{
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,9 @@
+fastapi
+python-multipart
+numpy
+uvicorn
+tensorflow
+pydantic
+opencv-python
+Wikipedia-API
+Pillow
