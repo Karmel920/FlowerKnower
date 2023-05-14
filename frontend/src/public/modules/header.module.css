@@ -1,14 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap');
 .topBar{
-    /* background: linear-gradient(180deg, #39F192 0%, rgba(57, 241, 146, 0.5) 100%); */
     background: #39F192;
     width: 100%;
     display:flex;
     justify-content:space-between;
     position:relative;
-    /* position:fixed;
-    top:0;position:fixed;
-    top:0; */
     z-index:999;
     overflow-y: hidden;
 }
@@ -61,5 +57,32 @@
 .flowerNumContainer{
     display:flex;
     align-items: center;
-
+}
+.openNav{
+    display: none;
+}
+.openNavHidden{
+    display: none;
+}
+@media only screen and (max-device-width: 800px) {
+    .openNav{
+        display: flex;
+    }
+    .openNavHidden{
+        display: none;
+    }
+    .text{
+        font-size: 13px;
+    }
+    .centerControl{
+        width:41%;
+        margin-left: 0.5em;
+    }
+    .flowerNumContainer{
+        display: none;
+    }
+    .rightControl{
+        width: 25%;
+        margin-right: 0;
+    }
 }

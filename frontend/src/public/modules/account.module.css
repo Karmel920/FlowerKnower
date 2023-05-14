@@ -31,7 +31,6 @@
 #saveBtn{
     width:20%;
     height: 2em;
-    background: #FAF7FF;
     border: 2px solid #1BF808;
     border-radius: 30px;
     margin:0.5em 0;
@@ -61,4 +60,32 @@
     font-size: 26px;
     line-height: 63px;
     color: #000000;
+}
+
+@media only screen  and (max-device-width: 800px){
+    
+    .emailText{
+        font-size: 16px;
     }
+    .text{
+        font-size: 20px;
+    }
+    #saveBtn{
+        width:30%;
+    }
+}
+@media only screen and (max-device-width: 600px){
+    #saveBtn{
+        width: 40%;
+    }
+}
+@media only screen and (max-device-width: 400px){
+    #saveBtn{
+        width: 60%;
+    }
+}
+@media only screen and (max-device-width: 200px){
+    #saveBtn{
+        width: 70%;
+    }
+}

@@ -5,11 +5,24 @@ import HomeIcon from '@mui/icons-material/Home';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import { Logout, Settings } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import InfoIcon from '@mui/icons-material/Info';
 import {Link} from 'react-router-dom';
-function Header({title}){
+import MenuIcon from '@mui/icons-material/Menu';
+import PersonIcon from '@mui/icons-material/Person';
+
+function Header({logoutAction, title, openNavbar, showMenu}){
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [flowersNum, setFlowersNum] = React.useState(0);
     const open = Boolean(anchorEl);
+
+    React.useEffect(()=>{
+        if(localStorage.getItem('flowersCount')===null || localStorage.getItem('flowersCount') === ""){
+            setFlowersNum(0);
+        }else{
+            setFlowersNum(localStorage.getItem('flowersCount'));
+        }
+    },[localStorage.getItem('flowersCount')])
 
     const handleClick = (event) =>{
         setAnchorEl(event.currentTarget);
@@ -18,12 +31,23 @@ function Header({title}){
         setAnchorEl(null);
     }
 
+    const handleLogout = () => {
+        logoutAction();
+    }
     return(
         <div className={styles.topBar}>
             <div className={styles.leftControl}>
-                <Link to="/">
+                <div className={showMenu ? styles.openNav : styles.openNavHidden}>
+                    <IconButton
+                     size='medium'
+                     onClick={openNavbar}
+                     >
+                        <MenuIcon/>
+                     </IconButton>
+                </div>
+                <Link to="/main">
                     <Tooltip title="Get back to main panel">
-                        <IconButton size='large' sx={{ml:1, width:"5ch", borderRadius:"30px"}}>
+                        <IconButton size='medium' sx={{ml:1, width:"5ch", borderRadius:"30px"}}>
                             <HomeIcon/>
                         </IconButton>
                     </Tooltip>
@@ -34,7 +58,7 @@ function Header({title}){
             </div>
             <div className= {styles.rightControl}>
                 <div className={styles.flowerNumContainer}>
-                    <p className={styles.text}>2</p>
+                    <p className={styles.text}>{flowersNum}</p>
                     <Tooltip title="Number of unique plants you've already discovered">
                         <LocalFloristIcon sx={{ml:"1ch"}}/>
                     </Tooltip>
@@ -45,7 +69,7 @@ function Header({title}){
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{width:32, height:32}}>M</Avatar>
+                        <Avatar sx={{width:32, height:32}}><PersonIcon/></Avatar>
                     </IconButton>   
                 </Tooltip>
                 <Menu
@@ -80,10 +104,6 @@ function Header({title}){
                 >
                     <Link to="/account">
                         <MenuItem onClick={handleClose}>
-                            {/* <Box sx={{display:"flex", flexDirection:"column", justifyContent:"center",alignItems:"center"}}>
-                                <img id={styles.prof_pic} alt="Profile picture"/>
-                                <p>Account</p>
-                            </Box> */}
                             <ListItemIcon>
                                 <AccountCircleIcon/>
                             </ListItemIcon>
@@ -99,8 +119,16 @@ function Header({title}){
                             Settings
                         </MenuItem>
                     </Link>
-                    <Link to="/login">
+                    <Link to="/info">
                         <MenuItem onClick={handleClose}>
+                            <ListItemIcon>
+                                <InfoIcon/>
+                            </ListItemIcon>
+                            Information
+                        </MenuItem>
+                    </Link>
+                    <Link to="/login">
+                        <MenuItem onClick={handleLogout}>
                             <ListItemIcon>
                                 <Logout/>
                             </ListItemIcon>

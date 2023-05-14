@@ -18,7 +18,10 @@
     -moz-box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
     box-shadow: 4px 7px 30px 5px rgba(66, 68, 90, 1);
 }
-
+#logo{
+    width:150px;
+    height:150px;
+}
 .loginPanel{
     height:100vh;
     background: #FDFFFE;
@@ -116,4 +119,123 @@ input{
 }
 .link{
     width:100%;
+}
+.errorText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width:100%;
+    color: red;
+}
+.successText{
+    font-family: 'Poppins';
+    font-style:normal;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+    color: green;
+}
+#infoButton{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    width: 90%;
+    transition: color .3s ease-in-out;
+}
+#infoButton:hover{
+    color: white;
+}
+#loginButtonMobile{
+    visibility: hidden;
+}
+#infoButtonMobile{
+    visibility: hidden;
+}
+@media only screen and (max-device-width: 800px){
+
+    .container{
+        display:flex;
+        flex-direction:column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .registerPanel{
+        display:none;
+    }
+
+    .mainText{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        color: #000000;
+    }
+    .firstText{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+    .secondText{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+    #registerButton{
+        border: 3px solid #32CE2F;
+        border-radius: 30px;
+        width: 100%;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        align-self:center;
+        color: #000000;
+        margin-top: 2em;
+        cursor: pointer;
+    }
+    input{
+        font-size: 13px;
+    }
+    #loginButtonMobile{
+        visibility: visible;
+        background: #CDB225;
+        border: 3px solid #D6DA2C;
+        border-radius: 30px;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FFFFFF;
+        margin-top: 2em;
+        width: 80%;
+        cursor: pointer;
+    }
+    .errorText {
+        font-size: 10px;
+    }
+    .successText{
+        font-size: 10px;
+    }
+    #infoButtonMobile{
+        visibility: visible;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        width: 90%;
+        transition: color .3s ease-in-out
+    }
+    #infoButtonMobile:hover{
+        color: blue;
+    }
+    .loginForm{
+        width:60%;
+    }
 }

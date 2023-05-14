@@ -4,7 +4,7 @@ import styles from '../modules/confirmation.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 function Confirmation(props){
 
-    const {open, onClose} = props;
+    const {open, onClose, handleDelete} = props;
 
 
     if(!open)
@@ -34,7 +34,7 @@ function Confirmation(props){
                             </Typography>
                             <Divider sx={{borderBottomWidth:2}}/>
                             <Box sx={{display:"flex", justifyContent:"flex-end", width:"100%", mt:"1em"}}>
-                                <Button variant="outlined" color="error" startIcon={<DeleteIcon/>}>
+                                <Button variant="outlined" color="error" startIcon={<DeleteIcon/>} onClick={handleDelete}>
                                     Delete
                                 </Button>
                                 <Button variant="outlined" sx={{color:"black", ml:2}} onClick={onClose}>

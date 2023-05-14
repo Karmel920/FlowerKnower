@@ -21,3 +21,19 @@
     position:absolute;
     width:100%;
 }
+.text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+}
+#plantImageMap{
+    align-self: center;
+    border-radius:30px;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+}

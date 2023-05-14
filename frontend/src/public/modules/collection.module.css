@@ -5,9 +5,10 @@
 }
 .main{
     display:grid;
-    grid-template-columns: 0.5fr 2fr;
+    grid-template-columns: 0.3fr 2fr;
     width:100%;
     height:100%;
+    overflow: auto;
 }
 .section{
     width:100%;
@@ -31,4 +32,26 @@
     font-size: 25px;
     color: black;
     margin-left: 2ch;
+}
+@media only screen and (max-device-width: 800px) {
+    
+    .main{
+        display:flex;
+        flex-direction: column;
+    }
+    .text{
+        font-size: 22px;
+    }
+}
+@media only screen and (max-device-width: 400px) {
+    
+    .main{
+        display:flex;
+        flex-direction: column;
+    }
+    .text{
+        font-size: 20px;
+        text-align: center;
+        margin:0;
+    }
 }

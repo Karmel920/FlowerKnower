@@ -3,23 +3,22 @@ import React from 'react';
 import styles from '../../public/modules/navbar.module.css';
 import Logo from '../img/main_logo.png';
 import {Link} from 'react-router-dom';
-function Navbar(){
+function Navbar({isOpenNavbar}){
     
-    // const categories = ['Idenitfy plant','Your plants','Map of discoveries'];
     const listStyle={
-        fontSize: "22px",
+        fontSize: "16px",
         fontFamily:"Poppins",
         fontStyle:"normal",
         width: '100%'
     }
     return(
-        <div className={styles.navbar}>
+        <div className={isOpenNavbar ? styles.navbarOpen : styles.navbar}>
              <Drawer
                 sx={{
                     width: "305px",
                     flexShrink: 0,
                     '& .MuiDrawer-paper': {
-                        width: "305px",
+                        width: "230px",
                         boxSizing: 'border-box',
                         background: '#FFFFFF',
                         zIndex:"auto",
@@ -33,7 +32,7 @@ function Navbar(){
                 <Box sx={{display:"flex",flexDirection:"column"}}>
                     <List>
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/">
+                            <Link to="/main" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Identify plants"/>
                                 </ListItemButton>
@@ -41,14 +40,14 @@ function Navbar(){
                         </ListItem>
         
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/collection">
+                            <Link to="/collection" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Your plants"/>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
                         <ListItem disabledPadding sx={{mb:"1ch"}}>
-                            <Link to="/map">
+                            <Link to="/map" className={styles.link}>
                                 <ListItemButton>
                                     <ListItemText primaryTypographyProps={{style: listStyle }} primary="Map of discoveries"/>
                                 </ListItemButton>
@@ -56,7 +55,7 @@ function Navbar(){
                         </ListItem>
 
                     </List>
-                    <img src={Logo} alt="Logo" style={{bottom:"50px", left:"50px", position:"absolute"}}/>
+                    <img src={Logo} alt="Logo"/>
                 </Box>
             </Drawer>
         </div>
