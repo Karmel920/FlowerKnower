@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap');
+.topBar{
+    background: #39F192;
+    width: 100%;
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+    z-index:999;
+    overflow-y: hidden;
+}
+.leftControl{
+    width:33%;
+    display:flex;
+    align-items: center;
+}
+.centerControl{
+    align-self: center;
+    display:flex;
+    align-items: center;
+}
+.rightControl{
+    width:33%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right:2em;
+}
+#user_menu{
+    width:15%;
+}
+#user_menu:hover{
+    border-radius: 30px;
+}
+#user_menu:active{
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0,0,0,0.24);
+}
+#prof_pic{
+    display:inline-block;
+    border-radius:50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 213px;
+    height: 213px;
+}
+#account_photo{
+    display:flex;
+    flex-direction:column;
+}
+.text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+}
+.flowerNumContainer{
+    display:flex;
+    align-items: center;
+}
+.openNav{
+    display: none;
+}
+.openNavHidden{
+    display: none;
+}
+@media only screen and (max-device-width: 800px) {
+    .openNav{
+        display: flex;
+    }
+    .openNavHidden{
+        display: none;
+    }
+    .text{
+        font-size: 13px;
+    }
+    .centerControl{
+        width:41%;
+        margin-left: 0.5em;
+    }
+    .flowerNumContainer{
+        display: none;
+    }
+    .rightControl{
+        width: 25%;
+        margin-right: 0;
+    }
+}

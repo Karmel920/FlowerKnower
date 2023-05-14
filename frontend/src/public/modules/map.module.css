@@ -1,0 +1,39 @@
+.container{
+    width:100vw;
+    height: 100vh;
+    overflow:hidden;
+}
+.mainMapPanel{
+    width:100%;
+    display:flex;
+    position:relative;
+}
+.mapContainer{
+    width:100%;
+    position:absolute;
+    top:0px;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin-top:5ch;
+}
+.mapHeader{
+    position:absolute;
+    width:100%;
+}
+.text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+}
+#plantImageMap{
+    align-self: center;
+    border-radius:30px;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+}

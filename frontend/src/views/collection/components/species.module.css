@@ -1,0 +1,96 @@
+.species{
+    background: #DEE9DC;
+    border-radius: 30px;
+    width: 60%;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+.speciesHeader{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:0 1.5ch;
+}
+.speciesText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 35px;
+    color:black;
+}
+.speciesBody{
+    padding-left: 2em;
+    padding-right: 2em;
+    width:100%;
+    overflow:hidden;
+}
+.speciesBodyText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 35px;
+    color:black;
+}
+.iconButton{
+    transition: transform 0.3s ease-out;
+}
+.iconButton_rotated{
+    transform: rotate(180deg);
+}
+.photoDiv{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+#plantImageDiv{
+    align-self: center;
+    border-radius:30px;
+    width: 360px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: inline-block;
+
+}
+@media only screen and (max-device-width: 900px){
+    #plantImageDiv{
+        width: 320px;
+        height: 320px;
+    }
+}
+@media only screen and (max-device-width: 800px){
+
+    .species{
+        width: 80%;
+    }    
+
+}
+@media only screen and (max-device-width: 400px){
+
+    #plantImageDiv{
+        width: 250px;
+        height: 250px;
+    }
+    .speciesText{
+        font-size: 14px;
+    }
+    .speciesBodyText{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-device-width: 300px){
+
+    #plantImageDiv{
+        width: 200px;
+        height: 200px;
+    }
+    .speciesBodyText{
+        font-size: 11px;
+    }
+}
