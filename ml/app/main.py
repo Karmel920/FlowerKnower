@@ -80,7 +80,7 @@ async def predict(image: UploadFile):
         return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
                             content={"message": "No image provided"})
 
-    extension = image.filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    extension = image.filename.split(".")[-1] in ("jpg", "jpeg", "png", "JPG")
     if not extension:
         return JSONResponse(status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
                             content={"message": f"File {image.filename} has unsupported extension type"})
