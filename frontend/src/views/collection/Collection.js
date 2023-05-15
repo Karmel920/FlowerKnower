@@ -7,6 +7,7 @@ import { Divider } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router";
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
@@ -32,7 +33,7 @@ function Collection(){
     },[]);
 
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
+        axiosInstance.get('/auth/logout', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -50,7 +51,7 @@ function Collection(){
     
     const getDiscoveries = () => {
         setSpinner(true);
-        axios.get('http://localhost:8080/api/v1/discovery', {
+        axiosInstance.get('/discovery', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }

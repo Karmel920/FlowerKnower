@@ -5,6 +5,7 @@ import Navbar from '../../public/components/Navbar';
 import DropFileInput from './components/DropFileInput';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 
 
 function Main(){
@@ -20,7 +21,7 @@ function Main(){
     },[navigate]);
 
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
+        axiosInstance.get('/auth/logout', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -30,7 +31,7 @@ function Main(){
         navigate("/login");
     }
     const getUniqueFlowersCount = () => {
-        axios.get('http://localhost:8080/api/v1/discovery/unique', {
+        axiosInstance.get('/discovery/unique', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }

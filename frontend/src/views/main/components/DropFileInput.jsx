@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import { IconButton, Tooltip } from "@mui/material";
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import axios from 'axios';
+import axiosInstance from "../../../helpers/axios_ml";
 import CircularProgress from '@mui/material/CircularProgress';
 import {Box} from "@mui/system";
 import Snackbar from '@mui/material/Snackbar';
@@ -78,7 +79,7 @@ function DropFileInput(){
         e.preventDefault();
         const formData = new FormData();
         formData.append("image",imageObject);
-        axios.post('http://127.0.0.1:5000/predict/img', formData, {
+        axiosInstance.post('/img', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

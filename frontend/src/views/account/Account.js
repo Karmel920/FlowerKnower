@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import BasicPhoto from '../../public/img/basic_photo.svg'
 import { useNavigate } from "react-router";
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import MuiAlert from "@mui/material/Alert";
 import Snackbar from '@mui/material/Snackbar';
 
@@ -38,11 +39,7 @@ function Account({photo}){
         }
     },[])
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
-            headers:{
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        });
+        axiosInstance.get('/auth/logout');
         localStorage.setItem('token',"");
         localStorage.setItem('flowersCount',"");
         navigate("/login");
@@ -54,7 +51,7 @@ function Account({photo}){
         if(image !== null)
             formData.append("image", image);
         if(!formData.entries().next().done){
-            axios.post('http://localhost:8080/api/v1/user/picture', formData, {
+            axiosInstance.post('/user/picture', formData, {
                 headers:{
                     Authorization: 'Bearer ' + localStorage.getItem('token'),
                     'Content-Type': 'multipart/form-data'
@@ -68,7 +65,7 @@ function Account({photo}){
     }
     const getUserImage = () => {
 
-        axios.get('http://localhost:8080/api/v1/user/picture',{
+        axiosInstance.get('/user/picture',{
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             },

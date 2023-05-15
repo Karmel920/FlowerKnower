@@ -14,6 +14,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
@@ -82,7 +83,7 @@ function Identify(){
         setOpenSuccessSnackbar(false);
     }
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
+        axiosInstance.get('/auth/logout', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -100,7 +101,7 @@ function Identify(){
         formData.append("description", description);
         formData.append("discoveryLocation.latitude", position.lat);
         formData.append("discoveryLocation.longitude", position.lng);
-        axios.post('http://localhost:8080/api/v1/discovery', formData, {
+        axiosInstance.post('/discovery', formData, {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token'),
                 'Content-Type': 'multipart/form-data'

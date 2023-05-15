@@ -3,6 +3,7 @@ import styles from '../../public/modules/settings.module.css';
 import Header from "../../public/components/Header";
 import Confirmation from "../../public/components/Confirmation";
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import { useNavigate } from "react-router";
 import MuiAlert from "@mui/material/Alert";
 import Snackbar from '@mui/material/Snackbar';
@@ -63,7 +64,7 @@ function Settings(){
     }
 
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
+        axiosInstance.get('/auth/logout', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -81,7 +82,7 @@ function Settings(){
     }
 
     const deleteAccount = () =>{
-        axios.delete('http://localhost:8080/api/v1/user', {
+        axiosInstance.delete('/user', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -109,7 +110,7 @@ function Settings(){
                         oldPassword: oldPassword
                     };
 
-                    axios.post('http://localhost:8080/api/v1/user/password', data, {
+                    axiosInstance.post('/user/password', data, {
                         headers: {
                             'Content-type': 'application/json',
                             Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -146,7 +147,7 @@ function Settings(){
                 newEmail: newEmail
             };
 
-            axios.post('http://localhost:8080/api/v1/user/email', data, {
+            axiosInstance.post('/user/email', data, {
                 headers: {
                     'Content-type': 'application/json',
                     Authorization: 'Bearer ' + localStorage.getItem('token')

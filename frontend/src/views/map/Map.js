@@ -7,6 +7,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router";
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import MuiAlert from "@mui/material/Alert";
 import Snackbar from '@mui/material/Snackbar';
 
@@ -38,7 +39,7 @@ function Map(){
     });
     
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/v1/auth/logout', {
+        axiosInstance.get('/auth/logout', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
@@ -49,7 +50,7 @@ function Map(){
     }
 
     const getDiscoveries = () => {
-        axios.get('http://localhost:8080/api/v1/discovery', {
+        axiosInstance.get('/discovery', {
             headers:{
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             }
