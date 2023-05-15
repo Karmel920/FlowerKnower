@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = "https://flowerknower-ml.onrender.com/predict";
+const baseURL = "https://flowerknower-server.onrender.com/api/v1";
 
 let headers = {};
 
