@@ -79,7 +79,7 @@ function DropFileInput(){
         e.preventDefault();
         const formData = new FormData();
         formData.append("image",imageObject);
-        axiosInstance.post('/img', formData, {
+        axios.post('https://flowerknower-ml.onrender.com/predict/img', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
