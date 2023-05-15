@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseURL = process.env.REACT_APP_API_SERVER_BASE_URL;
+const baseURL = "https://flowerknower-ml.onrender.com/predict";
 
 let headers = {};
 
