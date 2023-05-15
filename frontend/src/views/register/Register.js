@@ -4,6 +4,7 @@ import MainLogo from '../../public/img/main_logo.png';
 import SideLogo from '../../public/img/side_logo.svg';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -55,7 +56,7 @@ function Register(){
                     password: password
                 };
 
-                axios.post('http://localhost:8080/api/v1/auth/register', data, {
+                axiosInstance.post('/auth/register', data, {
                     headers:{
                         'Content-Type': 'application/json'
                     }

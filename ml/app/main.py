@@ -27,7 +27,9 @@ origins = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:9090",
     "http://127.0.0.1:8080",
-    "http://127.0.0.1:80"
+    "http://127.0.0.1:80",
+    "https://flowerknower-client.onrender.com",
+    "https://flowerknower-server.onrender.com"
 ]
 
 app.add_middleware(

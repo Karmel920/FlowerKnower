@@ -4,6 +4,7 @@ import SideLogo from '../../public/img/side_logo.svg';
 import { Link, useNavigate }  from 'react-router-dom';
 import styles from '../../public/modules/login.module.css';
 import axios from 'axios';
+import axiosInstance from "../../helpers/axios_back";
 import CircularProgress from '@mui/material/CircularProgress';
 import {Box} from "@mui/system";
 
@@ -37,7 +38,7 @@ function Login(){
             email:email,
             password:password
         };
-        axios.post('http://localhost:8080/api/v1/auth/authenticate',data, {
+        axiosInstance.post('/auth/authenticate',data, {
             headers: {
                 'Content-type': 'application/json'
             }
