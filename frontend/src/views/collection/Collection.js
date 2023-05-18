@@ -66,7 +66,7 @@ function Collection(){
     
     return(
         <div className={styles.container}>
-            <header style={{verticalAlign:"top"}}><Header title={"Your plants"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
+            <header style={{position:"fixed", top:"0", width:"100%", zIndex:"2"}}><Header title={"Your plants"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
                 <Navbar isOpenNavbar={isOpenNavbar}/>
                 <div className={styles.section}>

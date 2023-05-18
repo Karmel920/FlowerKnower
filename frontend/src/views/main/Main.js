@@ -8,7 +8,8 @@ import axios from 'axios';
 import axiosInstance from "../../helpers/axios_back";
 
 
-function Main(){
+function Main({props}){
+
 
     const navigate = useNavigate();
     const [isOpenNavbar, setIsOpenNavbar] = React.useState(false);
@@ -42,7 +43,7 @@ function Main(){
     }
     return(
         <div className={styles.container}>
-            <header style={{verticalAlign:"top"}}><Header logoutAction={handleLogout} title={"Identify plants"} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
+            <header style={{position:"fixed", top:"0", width:"100%", zIndex:"2"}}><Header logoutAction={handleLogout} title={"Identify plants"} openNavbar={()=> setIsOpenNavbar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
                 <Navbar isOpenNavbar={isOpenNavbar}/>
                 <main>
