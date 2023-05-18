@@ -19,3 +19,8 @@
 .secondaryText{
     color: rgb(236, 61, 61);
 }
+@media only screen and (max-device-width: 800px) {
+    .confirmation_modal{
+        width: 90%;
+    }
+}

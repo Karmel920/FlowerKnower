@@ -24,8 +24,8 @@ function Settings(){
 
     const navigate = useNavigate();
     const [openConfirmation, setOpenConfirmation] = React.useState(false);
-    const [successDeleteSnackbar, setSuccessDeleteSnackbar] = React.useState(false);
-    const [errorDeleteSnackbar, setErrorDeleteSnackbar] = React.useState(false);
+    // const [successDeleteSnackbar, setSuccessDeleteSnackbar] = React.useState(false);
+    // const [errorDeleteSnackbar, setErrorDeleteSnackbar] = React.useState(false);
     const [oldPassword, setOldPassword] = React.useState('');
     const [newPassword, setNewPassword] = React.useState('');
     const [repeatPassword,setRepeatPassword] = React.useState('');
@@ -72,25 +72,25 @@ function Settings(){
         localStorage.setItem('flowersCount',"");
         navigate("/login");
     }
-    const handleClose = (event, reason) => {
-        if(reason === 'clickaway'){
-            return;
-        }
-        setSuccessDeleteSnackbar(false);
-        setErrorDeleteSnackbar(false);
-    }
+    // const handleClose = (event, reason) => {
+    //     if(reason === 'clickaway'){
+    //         return;
+    //     }
+    //     setSuccessDeleteSnackbar(false);
+    //     setErrorDeleteSnackbar(false);
+    // }
 
-    const deleteAccount = () =>{
-        axios.delete('http://localhost:8080/api/v1/user', {
-            headers:{
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        }).then(response=>{
-            setSuccessDeleteSnackbar(true);
-        }).catch(error=>{
-            setErrorDeleteSnackbar(true);
-        });
-    }
+    // const deleteAccount = () =>{
+    //     axios.delete('http://localhost:8080/api/v1/user', {
+    //         headers:{
+    //             Authorization: 'Bearer ' + localStorage.getItem('token')
+    //         }
+    //     }).then(response=>{
+    //         setSuccessDeleteSnackbar(true);
+    //     }).catch(error=>{
+    //         setErrorDeleteSnackbar(true);
+    //     });
+    // }
 
     const changePassword = (e) => {
         e.preventDefault();
@@ -169,7 +169,7 @@ function Settings(){
     }
     return(
             <div className={styles.container}>
-                <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={successDeleteSnackbar} autoHideDuration={2000} onClose={()=>{handleClose(); localStorage.setItem('token',"")}}>
+                {/* <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} open={successDeleteSnackbar} autoHideDuration={2000} onClose={()=>{handleClose(); localStorage.setItem('token',"")}}>
                     <Alert onClose={handleClose} severity="success" sx={{width:"100%"}}>
                         Account has been successfully deleted, you will be logged out in moment
                     </Alert>
@@ -178,10 +178,10 @@ function Settings(){
                     <Alert onClose={handleClose} severity="error" sx={{width:"100%"}}>
                         Account could not be deleted
                     </Alert>
-                </Snackbar>
-                <header><Header title={"Settings"} logoutAction={handleLogout} showMenu={false}/></header>
+                </Snackbar> */}
+                <header style={{position:"fixed", top:"0", width:"100%", zIndex:"2"}}><Header title={"Settings"} logoutAction={handleLogout} showMenu={false}/></header>
                 <main className={styles.main}>
-                    <Confirmation open={openConfirmation} onClose ={() => setOpenConfirmation(false)} handleDelete={() => {deleteAccount(); setOpenConfirmation(false)}}/>
+                    {/* <Confirmation open={openConfirmation} onClose ={() => setOpenConfirmation(false)} handleDelete={() => {deleteAccount(); setOpenConfirmation(false)}}/> */}
                     <div className={styles.forms}>
                         <form className={styles.changePasswordForm} onSubmit={changePassword}>
                             <div className={styles.formHeader}>
@@ -238,7 +238,7 @@ function Settings(){
                             </Box>
                         </form>
                     </div>
-                    <button id={styles.deleteAccountBtn} type="button" onClick={handleOpenConfirmation}>Delete account</button>
+                    {/* <button id={styles.deleteAccountBtn} type="button" onClick={handleOpenConfirmation}>Delete account</button> */}
                 </main>
             </div>
     );

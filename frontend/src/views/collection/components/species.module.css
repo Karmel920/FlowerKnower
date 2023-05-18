@@ -93,4 +93,7 @@
     .speciesBodyText{
         font-size: 11px;
     }
+    .species{
+        width: 95%;
+    }
 }

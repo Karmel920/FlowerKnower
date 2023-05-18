@@ -1,0 +1,36 @@
+.inputForm{
+    display:flex;
+    align-items: center;
+}
+#predictionInput{
+   margin:0;
+}
+.inputText{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    color: #000000;
+}
+@media only screen and (max-device-width: 800px){
+    .inputText{
+        font-size: 20px;  
+    }
+
+}
+
+@media only screen and (max-device-width: 400px){
+
+    .inputText{
+        font-size: 19px;  
+    }
+    .inputForm{
+        flex-direction: column;
+    }
+
+}
+@media only screen and (max-device-width: 300px) {
+    .inputText{
+        font-size: 18px;  
+    }
+}
