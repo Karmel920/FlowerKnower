@@ -14,6 +14,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import EditableInput from './components/EditableInput';
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
@@ -23,10 +24,11 @@ function Identify(){
     const location = useLocation();
     const {img, imgObject, prediction, description} = location.state;
     const [showMapPopup, setShowMapPopup] = React.useState(false);
-    const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [openSuccessSnackbar, setOpenSuccessSnackbar] = React.useState(false);
     const [isOpenNavbar, setIsOpenNavabar] = React.useState(false);
-
+    const [openErrorSnackbar, setOpenErrorSnackbar] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [userPrediction, setUserPrediction] = React.useState(prediction);
     const handleAddLocalizationClick = () => {
         setShowMapPopup(true);
     }
@@ -34,7 +36,9 @@ function Identify(){
         setShowMapPopup(false);
         handleClick();
     }
-    
+    const handleSetUserPrediction = (value) =>{
+        setUserPrediction(value);
+    }
     const markerIconConst = L.icon({
         iconUrl: markerIcon,
         iconRetinaUrl: markerIcon,
@@ -80,6 +84,7 @@ function Identify(){
         }
         setOpen(false);
         setOpenSuccessSnackbar(false);
+        setOpenErrorSnackbar(false);
     }
     const handleLogout = () => {
         axios.get('http://localhost:8080/api/v1/auth/logout', {
@@ -96,7 +101,7 @@ function Identify(){
         setIsSubmitting(true);
         const formData = new FormData();
         formData.append("image", imgObject);
-        formData.append("name", prediction);
+        formData.append("name", userPrediction);
         formData.append("description", description);
         formData.append("discoveryLocation.latitude", position.lat);
         formData.append("discoveryLocation.longitude", position.lng);
@@ -106,13 +111,13 @@ function Identify(){
                 'Content-Type': 'multipart/form-data'
             }
         }).then(response=>{
-            setIsSubmitting(false);
             setOpenSuccessSnackbar(true);
             setTimeout(()=>{
                 navigate('/main')
             },2000)
         }).catch(error=>{
             setIsSubmitting(false);
+            setOpenErrorSnackbar(true);
         });
     }
 
@@ -128,18 +133,23 @@ function Identify(){
                     Discovery has been saved!
                 </Alert>
             </Snackbar>
-            <header style={{verticalAlign:"top"}}><Header title={"Identify plant"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavabar(!isOpenNavbar)} showMenu={true}/></header>
+            <Snackbar open={openErrorSnackbar} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="error" sx={{width:"100%"}}>
+                    Discovery could not be saved! (Maybe you did not add discovery location)
+                </Alert>
+            </Snackbar>
+            <header style={{position:"fixed", top:"0", width:"100%", zIndex:"2"}}><Header title={"Identify plant"} logoutAction={handleLogout} openNavbar={()=> setIsOpenNavabar(!isOpenNavbar)} showMenu={true}/></header>
             <div className={styles.main}>
                 <Navbar isOpenNavbar={isOpenNavbar}/>
                 <div className={styles.section}>
                     <div id={styles.plantImage} style={{backgroundImage:`url(${img})`}}/>
                     <div className={styles.plantInfoContainer}>
                         <div className={styles.plantInfoHeader}>
-                            <p className={styles.text}>You found: {prediction.charAt(0).toUpperCase()+prediction.slice(1)}</p>
+                            {/* <p className={styles.text}>You found: {prediction.charAt(0).toUpperCase()+prediction.slice(1)}</p> */}
+                            <EditableInput initialValue={prediction.charAt(0).toUpperCase()+prediction.slice(1)} onAccept={handleSetUserPrediction}/>
                             <Button className={styles.locationButton} variant="outlined" endIcon={<AddLocationIcon/>} onClick={handleAddLocalizationClick}>
                                 Add discovery location
                             </Button>
-
                             {showMapPopup && (
                                 <div className = {styles.mapPopup}>
                                     <Alert severity="info">Click on the marker to make it draggable and to save location simply close map</Alert>
@@ -182,7 +192,7 @@ function Identify(){
                             <Link className={styles.link} to="/main">
                                 <button id={styles.nextButton} type="button">OK</button>
                             </Link>
-                            <button id={styles.saveButton} type="button" onClick={submitDiscovery}>Save</button>
+                            <button id={styles.saveButton} type="button" onClick={submitDiscovery} disabled={isSubmitting}>Save</button>
                         </div>
                     </div>
                 </div>

@@ -121,7 +121,7 @@ function Account({photo}){
                     Profile picture could not be displayed
                 </Alert>
             </Snackbar>
-            <header><Header title={"Profile"} logoutAction={handleLogout} showMenu={false}/></header>
+            <header style={{position:"fixed", top:"0", width:"100%", zIndex:"2"}}><Header title={"Profile"} logoutAction={handleLogout} showMenu={false}/></header>
             <main className={styles.main}>
                 <form className={styles.accountForm} onSubmit={submitPicture}>
                     <div className={styles.profilePicture}>

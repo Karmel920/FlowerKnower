@@ -15,7 +15,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3ch;
+    margin-top: 6ch;
 }
 #plantImage{
     border-radius:30px;
