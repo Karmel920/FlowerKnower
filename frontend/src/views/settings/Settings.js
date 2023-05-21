@@ -81,17 +81,17 @@ function Settings(){
     //     setErrorDeleteSnackbar(false);
     // }
 
-    const deleteAccount = () =>{
-        axiosInstance.delete('/user', {
-            headers:{
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        }).then(response=>{
-            setSuccessDeleteSnackbar(true);
-        }).catch(error=>{
-            setErrorDeleteSnackbar(true);
-        });
-    }
+//     const deleteAccount = () =>{
+//         axiosInstance.delete('/user', {
+//             headers:{
+//                 Authorization: 'Bearer ' + localStorage.getItem('token')
+//             }
+//         }).then(response=>{
+//             setSuccessDeleteSnackbar(true);
+//         }).catch(error=>{
+//             setErrorDeleteSnackbar(true);
+//         });
+//     }
 
     const changePassword = (e) => {
         e.preventDefault();
